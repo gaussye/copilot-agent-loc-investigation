@@ -1,8 +1,10 @@
-# GitHub Copilot 2026-10-26 本地测试与 API 数据对照
+# GitHub Copilot 本地测试与 API 数据对照
 
 整理日期：2026-10-28。本文使用已保存的测试证据及 API 快照，不代表重新调用 API。
 
-**当前结果：四次本地操作实际新增 320 行、删除 80 行；API 对该用户 UTC 10 月 26 日的统计为新增 160 行、删除 40 行。已观察到汇总数值差异，但无法确认 API 中的行数具体来自哪次操作。**
+记录范围：第 1 至 8 节为 **10 月 26 日四组测试**；第 9 节为 **10 月 28 日单独 CL 重测**。两天的客户端版本和数据分别记录，不合并对账。
+
+**10 月 26 日对照结果：四次本地操作实际新增 320 行、删除 80 行；API 对该用户 UTC 10 月 26 日的统计为新增 160 行、删除 40 行。已观察到汇总数值差异，但无法确认 API 中的行数具体来自哪次操作。**
 
 ## 1. 账号、客户端版本与统计日期
 
@@ -386,3 +388,55 @@ X-GitHub-Api-Version: 2026-03-10
 - [Lines of code metrics](https://docs.github.com/en/copilot/reference/copilot-usage-metrics/lines-of-code-metrics)
 - [VS Code agent harnesses](https://code.visualstudio.com/docs/agents/run/agent-harnesses)
 - [Copilot agent session streaming / Usage Records 公告](https://github.blog/changelog/2026-07-02-copilot-agent-session-streaming-is-now-in-public-preview/)
+
+## 9. 2026-10-28 单独 CL 重测
+
+### 本地结果
+
+**CL（Local Harness / 自定义 LoC Probe）已完成一次成功编辑并点击 Keep All Edits：新增 80 行、删除 20 行，净增 60 行。**
+
+| 项目 | 本轮记录 |
+|---|---|
+| 测试账号 / 后续查询企业 | `gye6666` / `gye` |
+| 成功重试的测试标识 | `20261028-CL-R2` |
+| 发送时间（北京时间） | 2026-10-28 09:43；扩展请求日志为 `09:43:50.128` |
+| Harness / Agent | Local / LoC Probe |
+| VS Code / Copilot Chat | **1.143.1 / 0.71.0**，重启后的安装元数据 |
+| 模型 / Effort / Context | GPT-6 Luna / Medium / 272K |
+| 文件 | `copilot-loc-test\custom_local_20261028.py` |
+| 界面计数 | +80 / -20 |
+| 实际落盘差异 | +80 / -20 |
+| 文件状态 | 25 行变为 85 行，CRLF，语法有效，内容与预期完全一致 |
+| 接受操作 | 已点击 Keep All Edits，Keep / Undo 控件随后消失 |
+| 成功请求 ID | `request_a3f28585-fde1-4a2f-9281-69300e8e66b3` |
+| 最终证据采集时间 | `2026-10-28T09:45:44.194519+08:00` |
+| 最终文件 SHA-256 | `4c3675924615acad6d2074fd14baaae5114afa2fb89b8bd914f97c2ddc6c4fdd` |
+
+### 失败尝试与环境变化
+
+09:31 的第一次受控请求使用 VS Code **1.142.0 / Copilot Chat 0.70.0**，请求 ID 为 `request_a570ca2c-685f-4764-83e8-36fdb963d859`。扩展日志报告：
+
+> Failed to get copilot token due to: Your Copilot access has been revoked by the providing organization or enterprise. You are currently logged in as gye6666.
+
+该次请求没有修改文件，之后仍核对到 25 行 CRLF 基线及原始哈希。用户处理 VS Code 问题并重启后，安装版本已变为 **1.143.1 / 0.71.0**，重新登录账号仍是 `gye6666`。成功测试是在另一个新 Chat 中、单独获得发送批准后执行，未重置或手工修正 Agent 输出。
+
+因此，本轮不是与 26 日完全相同客户端版本的重复实验。10 月 22、23、26 日共 12 个历史测试文件及 LoC Probe 定义均保持不变。
+
+原始失败会话里还观察到 Try Again 和问候消息，因此不能假定该账号当天只有一次交互。本轮自动化自身提交了两次受控 CL 请求，其中一次失败、一次成功编辑；其他消息不能混入“成功文件编辑次数”。
+
+成功执行时状态栏仍显示过 `Quota reached`，但实际任务完成并写入了预期内容；该提示不能在本次记录中代替执行结果。未修改预算、企业权限或自定义 Agent 定义。
+
+### 后续 API 观察口径
+
+测试前于 **2026-10-28 09:30:36 北京时间**调用 `users-28-day/latest`，HTTP 200，报表范围为 **2026-09-29 至 2026-10-26**，尚不覆盖本轮 **UTC 2026-10-28**。
+
+后续应按企业 `gye`、用户 `gye6666`、UTC 日期 `2026-10-28` 查询。该 UTC 日对应北京时间 `[2026-10-28 08:00, 2026-10-29 08:00)`。先检查报表是否覆盖该日，再核对 `agent_edit` 的实际增删与 `chat_panel_custom_mode` 的交互。
+
+本次成功受控编辑可供对照的本地量是 **+80 / -20**，但不能要求整天的交互 / 生成次数必然为 1，也不能排除同日其他活动。当前未验证后台入账，没有捕获本轮本地 acceptance 日志事件也不等于遥测没有送达。
+
+| 本轮证据 | 用途 |
+|---|---|
+| [loc-ui-test-20261028-cl.json](loc-ui-test-20261028-cl.json) | 首次失败、重启版本变化、成功重试、请求 ID 和 Keep 记录 |
+| [loc-ui-test-20261028-baseline-observed.json](loc-ui-test-20261028-baseline-observed.json) | 新文件修改前基线 |
+| [loc-ui-test-20261028-observed.json](loc-ui-test-20261028-observed.json) | 点击 Keep 后的实际内容、差异、行数、换行和哈希 |
+| [metrics-enterprise-gye-gye6666-20261028-cl-baseline-raw.json](metrics-enterprise-gye-gye6666-20261028-cl-baseline-raw.json) | 09:30 查询的 API 原始目标用户快照，尚不包含 UTC 10 月 28 日 |
