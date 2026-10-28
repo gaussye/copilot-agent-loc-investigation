@@ -1,0 +1,64 @@
+{
+  "queried_at_utc": "2026-10-28T00:45:20.232684+00:00",
+  "enterprise": "gye",
+  "actor": "gye6666",
+  "test_day_utc": "2026-10-26",
+  "http_status": 200,
+  "raw_api_snapshot": "metrics-enterprise-gye-gye6666-20261028-0845-refresh-raw.json",
+  "client_manifest": "loc-ui-test-20261026.json",
+  "report_start_day": "2026-09-29",
+  "report_end_day": "2026-10-26",
+  "test_day_covered": true,
+  "test_day_user_record_count": 1,
+  "client": {
+    "submitted_test_prompts": 4,
+    "completed_file_edit_cases": 4,
+    "loc_added_sum": 320,
+    "loc_deleted_sum": 80,
+    "net": 240,
+    "local_harness_added": 160,
+    "local_harness_deleted": 40,
+    "copilot_harness_added": 160,
+    "copilot_harness_deleted": 40
+  },
+  "server": {
+    "user_initiated_interaction_count": 2,
+    "code_generation_activity_count": 2,
+    "code_acceptance_activity_count": 0,
+    "loc_suggested_to_add_sum": 0,
+    "loc_suggested_to_delete_sum": 0,
+    "loc_added_sum": 160,
+    "loc_deleted_sum": 40,
+    "net": 120,
+    "agent_edit_added": 160,
+    "agent_edit_deleted": 40,
+    "chat_panel_agent_mode_interactions": 1,
+    "chat_panel_custom_mode_interactions": 1,
+    "used_agent": true,
+    "totals_by_custom_agent": [],
+    "distinct_custom_agent_use_count": 0,
+    "vscode_client_request_count": 18,
+    "vscode_client_session_count": 4
+  },
+  "difference_client_minus_server": {
+    "loc_added_sum": 160,
+    "loc_deleted_sum": 40,
+    "net": 120
+  },
+  "reported_fraction_of_client_loc": 0.5,
+  "per_request_check_snapshot": "loc-ui-test-20261026-per-request-check-20261028.json",
+  "individual_server_attribution_status": "unavailable_metrics_are_aggregated_and_usage_records_endpoint_returned_404",
+  "conclusions": [
+    "The report now covers the test day and contains a record for the correct account.",
+    "Reported actual added and deleted lines are each 50 percent of the controlled client baseline.",
+    "Custom-mode interaction is present; its zero feature-level LoC is not evidence of zero custom-agent edits because actual edits are pooled under agent_edit.",
+    "Actual edit LoC is nonzero even though code_acceptance_activity_count and suggestion LoC are zero.",
+    "The returned named-custom-agent breakdown is empty, while chat_panel_custom_mode has one interaction; these are distinct fields and cannot be treated as equivalent counters."
+  ],
+  "attribution_limitations": [
+    "Reported LoC equals either pair of equal-sized harness cases. This is compatible with only the Local pair being counted, but does not prove that attribution.",
+    "The user-day record contains no explicit harness or request-ID breakdown linking actual LoC to individual cases.",
+    "The vscode client session count of four is a separate aggregate and does not establish that each of the four controlled cases contributed LoC.",
+    "Other same-day activity or later report revisions are not excluded. The shortfall is observed in this snapshot, not proven permanent loss."
+  ]
+}

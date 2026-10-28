@@ -1,0 +1,74 @@
+{
+  "enterprise": "gye",
+  "actor": "gye6666",
+  "test_day_utc": "2026-10-26",
+  "status": "individual_server_attribution_unavailable",
+  "single_day_api_snapshot": "metrics-enterprise-gye-gye6666-20261026-one-day-20261028-0848-raw.json",
+  "single_day_matching_record_count": 1,
+  "single_day_matches_28_day_record_except_report_date_fields": true,
+  "request_identifier_fields_present_in_metrics_response": [],
+  "metrics_granularity": "One user-day record with aggregate feature, IDE, model and client breakdowns; no individual requests, sessions or edits.",
+  "cases": [
+    {
+      "id": "20261026-CL",
+      "harness": "Local",
+      "agent": "LoC Probe",
+      "sent_at_ui_local": "2026-10-26 09:26",
+      "request_id": "request_caf3b645-d531-4dd1-8140-ba1e12b6912c",
+      "client_added": 80,
+      "client_deleted": 20,
+      "server_added": null,
+      "server_deleted": null,
+      "server_record_match": "unavailable"
+    },
+    {
+      "id": "20261026-CC",
+      "harness": "Copilot",
+      "agent": "LoC Probe",
+      "sent_at_ui_local": "2026-10-26 09:30",
+      "request_id": null,
+      "client_added": 80,
+      "client_deleted": 20,
+      "server_added": null,
+      "server_deleted": null,
+      "server_record_match": "unavailable"
+    },
+    {
+      "id": "20261026-DC",
+      "harness": "Copilot",
+      "agent": "Agent",
+      "sent_at_ui_local": "2026-10-26 09:33",
+      "request_id": null,
+      "client_added": 80,
+      "client_deleted": 20,
+      "server_added": null,
+      "server_deleted": null,
+      "server_record_match": "unavailable"
+    },
+    {
+      "id": "20261026-DL",
+      "harness": "Local",
+      "agent": "Agent",
+      "sent_at_ui_local": "2026-10-26 09:35",
+      "request_id": "request_59e2ebe8-c4a5-4a19-8792-3401306f687e",
+      "client_added": 80,
+      "client_deleted": 20,
+      "server_added": null,
+      "server_deleted": null,
+      "server_record_match": "unavailable"
+    }
+  ],
+  "usage_records_probe": {
+    "snapshot": "copilot-usage-records-gye-probe-20261028-0850.json",
+    "queried_at_utc": "2026-10-28T00:50:19.188402+00:00",
+    "endpoint": "enterprises/gye/copilot/usage-records",
+    "http_status": 404,
+    "error_message": "Not Found",
+    "cause_confirmed": false,
+    "policies_changed": false,
+    "official_availability": "Enterprise Cloud customers with enterprise managed users; enterprise owners can retrieve the last 48 hours of session data when the relevant policies are enabled.",
+    "official_source": "https://github.blog/changelog/2026-07-02-copilot-agent-session-streaming-is-now-in-public-preview/",
+    "scope_limitation": "Session prompts, responses and tool activity are not a documented guarantee of per-request LoC accounting fields."
+  },
+  "interpretation": "No individual backend LoC or delivery result can be assigned to any case. Null means unknown, not zero. Daily feature rows, request_count=18 and session_count=4 are aggregates, not individual records."
+}

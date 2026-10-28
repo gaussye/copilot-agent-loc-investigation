@@ -1,0 +1,72 @@
+{
+  "collected_at_local": "2026-10-26T09:36:03.208235+08:00",
+  "baseline_content": "VALUES = {\n    \"old_01\": 1,\n    \"old_02\": 2,\n    \"old_03\": 3,\n    \"old_04\": 4,\n    \"old_05\": 5,\n    \"old_06\": 6,\n    \"old_07\": 7,\n    \"old_08\": 8,\n    \"old_09\": 9,\n    \"old_10\": 10,\n    \"old_11\": 11,\n    \"old_12\": 12,\n    \"old_13\": 13,\n    \"old_14\": 14,\n    \"old_15\": 15,\n    \"old_16\": 16,\n    \"old_17\": 17,\n    \"old_18\": 18,\n    \"old_19\": 19,\n    \"old_20\": 20,\n}\n\ndef total():\n    return sum(VALUES.values())\n",
+  "baseline_sha256": "6298c00f97ffc8ecc7c34ba09dc14c021d83cf0ab507d3debd1be2d1d41e6bfe",
+  "baseline_line_endings": "CRLF",
+  "baseline_line_count": 25,
+  "expected_content": "VALUES = {\n    \"new_01\": 1,\n    \"new_02\": 2,\n    \"new_03\": 3,\n    \"new_04\": 4,\n    \"new_05\": 5,\n    \"new_06\": 6,\n    \"new_07\": 7,\n    \"new_08\": 8,\n    \"new_09\": 9,\n    \"new_10\": 10,\n    \"new_11\": 11,\n    \"new_12\": 12,\n    \"new_13\": 13,\n    \"new_14\": 14,\n    \"new_15\": 15,\n    \"new_16\": 16,\n    \"new_17\": 17,\n    \"new_18\": 18,\n    \"new_19\": 19,\n    \"new_20\": 20,\n    \"new_21\": 21,\n    \"new_22\": 22,\n    \"new_23\": 23,\n    \"new_24\": 24,\n    \"new_25\": 25,\n    \"new_26\": 26,\n    \"new_27\": 27,\n    \"new_28\": 28,\n    \"new_29\": 29,\n    \"new_30\": 30,\n    \"new_31\": 31,\n    \"new_32\": 32,\n    \"new_33\": 33,\n    \"new_34\": 34,\n    \"new_35\": 35,\n    \"new_36\": 36,\n    \"new_37\": 37,\n    \"new_38\": 38,\n    \"new_39\": 39,\n    \"new_40\": 40,\n    \"new_41\": 41,\n    \"new_42\": 42,\n    \"new_43\": 43,\n    \"new_44\": 44,\n    \"new_45\": 45,\n    \"new_46\": 46,\n    \"new_47\": 47,\n    \"new_48\": 48,\n    \"new_49\": 49,\n    \"new_50\": 50,\n    \"new_51\": 51,\n    \"new_52\": 52,\n    \"new_53\": 53,\n    \"new_54\": 54,\n    \"new_55\": 55,\n    \"new_56\": 56,\n    \"new_57\": 57,\n    \"new_58\": 58,\n    \"new_59\": 59,\n    \"new_60\": 60,\n    \"new_61\": 61,\n    \"new_62\": 62,\n    \"new_63\": 63,\n    \"new_64\": 64,\n    \"new_65\": 65,\n    \"new_66\": 66,\n    \"new_67\": 67,\n    \"new_68\": 68,\n    \"new_69\": 69,\n    \"new_70\": 70,\n    \"new_71\": 71,\n    \"new_72\": 72,\n    \"new_73\": 73,\n    \"new_74\": 74,\n    \"new_75\": 75,\n    \"new_76\": 76,\n    \"new_77\": 77,\n    \"new_78\": 78,\n    \"new_79\": 79,\n    \"new_80\": 80,\n}\n\ndef total():\n    return sum(VALUES.values())\n",
+  "custom_agent_definition": "---\nname: LoC Probe\ndescription: Minimal custom agent for testing Copilot file-edit telemetry.\ntools: ['edit']\n---\n\nMake only the file changes explicitly requested by the user.\nUse built-in file editing tools. Do not use terminals, scripts, MCP tools,\nsubagents, skills, or handoffs. Do not modify other files.\n",
+  "files": [
+    {
+      "file": "custom_copilot_20261026.py",
+      "sha256": "4c3675924615acad6d2074fd14baaae5114afa2fb89b8bd914f97c2ddc6c4fdd",
+      "crlf_count": 85,
+      "syntax_error": null,
+      "line_count": 85,
+      "added": 80,
+      "deleted": 20,
+      "net": 60,
+      "matches_expected": true,
+      "is_unmodified_baseline": false,
+      "content": "VALUES = {\n    \"new_01\": 1,\n    \"new_02\": 2,\n    \"new_03\": 3,\n    \"new_04\": 4,\n    \"new_05\": 5,\n    \"new_06\": 6,\n    \"new_07\": 7,\n    \"new_08\": 8,\n    \"new_09\": 9,\n    \"new_10\": 10,\n    \"new_11\": 11,\n    \"new_12\": 12,\n    \"new_13\": 13,\n    \"new_14\": 14,\n    \"new_15\": 15,\n    \"new_16\": 16,\n    \"new_17\": 17,\n    \"new_18\": 18,\n    \"new_19\": 19,\n    \"new_20\": 20,\n    \"new_21\": 21,\n    \"new_22\": 22,\n    \"new_23\": 23,\n    \"new_24\": 24,\n    \"new_25\": 25,\n    \"new_26\": 26,\n    \"new_27\": 27,\n    \"new_28\": 28,\n    \"new_29\": 29,\n    \"new_30\": 30,\n    \"new_31\": 31,\n    \"new_32\": 32,\n    \"new_33\": 33,\n    \"new_34\": 34,\n    \"new_35\": 35,\n    \"new_36\": 36,\n    \"new_37\": 37,\n    \"new_38\": 38,\n    \"new_39\": 39,\n    \"new_40\": 40,\n    \"new_41\": 41,\n    \"new_42\": 42,\n    \"new_43\": 43,\n    \"new_44\": 44,\n    \"new_45\": 45,\n    \"new_46\": 46,\n    \"new_47\": 47,\n    \"new_48\": 48,\n    \"new_49\": 49,\n    \"new_50\": 50,\n    \"new_51\": 51,\n    \"new_52\": 52,\n    \"new_53\": 53,\n    \"new_54\": 54,\n    \"new_55\": 55,\n    \"new_56\": 56,\n    \"new_57\": 57,\n    \"new_58\": 58,\n    \"new_59\": 59,\n    \"new_60\": 60,\n    \"new_61\": 61,\n    \"new_62\": 62,\n    \"new_63\": 63,\n    \"new_64\": 64,\n    \"new_65\": 65,\n    \"new_66\": 66,\n    \"new_67\": 67,\n    \"new_68\": 68,\n    \"new_69\": 69,\n    \"new_70\": 70,\n    \"new_71\": 71,\n    \"new_72\": 72,\n    \"new_73\": 73,\n    \"new_74\": 74,\n    \"new_75\": 75,\n    \"new_76\": 76,\n    \"new_77\": 77,\n    \"new_78\": 78,\n    \"new_79\": 79,\n    \"new_80\": 80,\n}\n\ndef total():\n    return sum(VALUES.values())\n"
+    },
+    {
+      "file": "custom_local_20261026.py",
+      "sha256": "4c3675924615acad6d2074fd14baaae5114afa2fb89b8bd914f97c2ddc6c4fdd",
+      "crlf_count": 85,
+      "syntax_error": null,
+      "line_count": 85,
+      "added": 80,
+      "deleted": 20,
+      "net": 60,
+      "matches_expected": true,
+      "is_unmodified_baseline": false,
+      "content": "VALUES = {\n    \"new_01\": 1,\n    \"new_02\": 2,\n    \"new_03\": 3,\n    \"new_04\": 4,\n    \"new_05\": 5,\n    \"new_06\": 6,\n    \"new_07\": 7,\n    \"new_08\": 8,\n    \"new_09\": 9,\n    \"new_10\": 10,\n    \"new_11\": 11,\n    \"new_12\": 12,\n    \"new_13\": 13,\n    \"new_14\": 14,\n    \"new_15\": 15,\n    \"new_16\": 16,\n    \"new_17\": 17,\n    \"new_18\": 18,\n    \"new_19\": 19,\n    \"new_20\": 20,\n    \"new_21\": 21,\n    \"new_22\": 22,\n    \"new_23\": 23,\n    \"new_24\": 24,\n    \"new_25\": 25,\n    \"new_26\": 26,\n    \"new_27\": 27,\n    \"new_28\": 28,\n    \"new_29\": 29,\n    \"new_30\": 30,\n    \"new_31\": 31,\n    \"new_32\": 32,\n    \"new_33\": 33,\n    \"new_34\": 34,\n    \"new_35\": 35,\n    \"new_36\": 36,\n    \"new_37\": 37,\n    \"new_38\": 38,\n    \"new_39\": 39,\n    \"new_40\": 40,\n    \"new_41\": 41,\n    \"new_42\": 42,\n    \"new_43\": 43,\n    \"new_44\": 44,\n    \"new_45\": 45,\n    \"new_46\": 46,\n    \"new_47\": 47,\n    \"new_48\": 48,\n    \"new_49\": 49,\n    \"new_50\": 50,\n    \"new_51\": 51,\n    \"new_52\": 52,\n    \"new_53\": 53,\n    \"new_54\": 54,\n    \"new_55\": 55,\n    \"new_56\": 56,\n    \"new_57\": 57,\n    \"new_58\": 58,\n    \"new_59\": 59,\n    \"new_60\": 60,\n    \"new_61\": 61,\n    \"new_62\": 62,\n    \"new_63\": 63,\n    \"new_64\": 64,\n    \"new_65\": 65,\n    \"new_66\": 66,\n    \"new_67\": 67,\n    \"new_68\": 68,\n    \"new_69\": 69,\n    \"new_70\": 70,\n    \"new_71\": 71,\n    \"new_72\": 72,\n    \"new_73\": 73,\n    \"new_74\": 74,\n    \"new_75\": 75,\n    \"new_76\": 76,\n    \"new_77\": 77,\n    \"new_78\": 78,\n    \"new_79\": 79,\n    \"new_80\": 80,\n}\n\ndef total():\n    return sum(VALUES.values())\n"
+    },
+    {
+      "file": "default_copilot_20261026.py",
+      "sha256": "4c3675924615acad6d2074fd14baaae5114afa2fb89b8bd914f97c2ddc6c4fdd",
+      "crlf_count": 85,
+      "syntax_error": null,
+      "line_count": 85,
+      "added": 80,
+      "deleted": 20,
+      "net": 60,
+      "matches_expected": true,
+      "is_unmodified_baseline": false,
+      "content": "VALUES = {\n    \"new_01\": 1,\n    \"new_02\": 2,\n    \"new_03\": 3,\n    \"new_04\": 4,\n    \"new_05\": 5,\n    \"new_06\": 6,\n    \"new_07\": 7,\n    \"new_08\": 8,\n    \"new_09\": 9,\n    \"new_10\": 10,\n    \"new_11\": 11,\n    \"new_12\": 12,\n    \"new_13\": 13,\n    \"new_14\": 14,\n    \"new_15\": 15,\n    \"new_16\": 16,\n    \"new_17\": 17,\n    \"new_18\": 18,\n    \"new_19\": 19,\n    \"new_20\": 20,\n    \"new_21\": 21,\n    \"new_22\": 22,\n    \"new_23\": 23,\n    \"new_24\": 24,\n    \"new_25\": 25,\n    \"new_26\": 26,\n    \"new_27\": 27,\n    \"new_28\": 28,\n    \"new_29\": 29,\n    \"new_30\": 30,\n    \"new_31\": 31,\n    \"new_32\": 32,\n    \"new_33\": 33,\n    \"new_34\": 34,\n    \"new_35\": 35,\n    \"new_36\": 36,\n    \"new_37\": 37,\n    \"new_38\": 38,\n    \"new_39\": 39,\n    \"new_40\": 40,\n    \"new_41\": 41,\n    \"new_42\": 42,\n    \"new_43\": 43,\n    \"new_44\": 44,\n    \"new_45\": 45,\n    \"new_46\": 46,\n    \"new_47\": 47,\n    \"new_48\": 48,\n    \"new_49\": 49,\n    \"new_50\": 50,\n    \"new_51\": 51,\n    \"new_52\": 52,\n    \"new_53\": 53,\n    \"new_54\": 54,\n    \"new_55\": 55,\n    \"new_56\": 56,\n    \"new_57\": 57,\n    \"new_58\": 58,\n    \"new_59\": 59,\n    \"new_60\": 60,\n    \"new_61\": 61,\n    \"new_62\": 62,\n    \"new_63\": 63,\n    \"new_64\": 64,\n    \"new_65\": 65,\n    \"new_66\": 66,\n    \"new_67\": 67,\n    \"new_68\": 68,\n    \"new_69\": 69,\n    \"new_70\": 70,\n    \"new_71\": 71,\n    \"new_72\": 72,\n    \"new_73\": 73,\n    \"new_74\": 74,\n    \"new_75\": 75,\n    \"new_76\": 76,\n    \"new_77\": 77,\n    \"new_78\": 78,\n    \"new_79\": 79,\n    \"new_80\": 80,\n}\n\ndef total():\n    return sum(VALUES.values())\n"
+    },
+    {
+      "file": "default_local_20261026.py",
+      "sha256": "4c3675924615acad6d2074fd14baaae5114afa2fb89b8bd914f97c2ddc6c4fdd",
+      "crlf_count": 85,
+      "syntax_error": null,
+      "line_count": 85,
+      "added": 80,
+      "deleted": 20,
+      "net": 60,
+      "matches_expected": true,
+      "is_unmodified_baseline": false,
+      "content": "VALUES = {\n    \"new_01\": 1,\n    \"new_02\": 2,\n    \"new_03\": 3,\n    \"new_04\": 4,\n    \"new_05\": 5,\n    \"new_06\": 6,\n    \"new_07\": 7,\n    \"new_08\": 8,\n    \"new_09\": 9,\n    \"new_10\": 10,\n    \"new_11\": 11,\n    \"new_12\": 12,\n    \"new_13\": 13,\n    \"new_14\": 14,\n    \"new_15\": 15,\n    \"new_16\": 16,\n    \"new_17\": 17,\n    \"new_18\": 18,\n    \"new_19\": 19,\n    \"new_20\": 20,\n    \"new_21\": 21,\n    \"new_22\": 22,\n    \"new_23\": 23,\n    \"new_24\": 24,\n    \"new_25\": 25,\n    \"new_26\": 26,\n    \"new_27\": 27,\n    \"new_28\": 28,\n    \"new_29\": 29,\n    \"new_30\": 30,\n    \"new_31\": 31,\n    \"new_32\": 32,\n    \"new_33\": 33,\n    \"new_34\": 34,\n    \"new_35\": 35,\n    \"new_36\": 36,\n    \"new_37\": 37,\n    \"new_38\": 38,\n    \"new_39\": 39,\n    \"new_40\": 40,\n    \"new_41\": 41,\n    \"new_42\": 42,\n    \"new_43\": 43,\n    \"new_44\": 44,\n    \"new_45\": 45,\n    \"new_46\": 46,\n    \"new_47\": 47,\n    \"new_48\": 48,\n    \"new_49\": 49,\n    \"new_50\": 50,\n    \"new_51\": 51,\n    \"new_52\": 52,\n    \"new_53\": 53,\n    \"new_54\": 54,\n    \"new_55\": 55,\n    \"new_56\": 56,\n    \"new_57\": 57,\n    \"new_58\": 58,\n    \"new_59\": 59,\n    \"new_60\": 60,\n    \"new_61\": 61,\n    \"new_62\": 62,\n    \"new_63\": 63,\n    \"new_64\": 64,\n    \"new_65\": 65,\n    \"new_66\": 66,\n    \"new_67\": 67,\n    \"new_68\": 68,\n    \"new_69\": 69,\n    \"new_70\": 70,\n    \"new_71\": 71,\n    \"new_72\": 72,\n    \"new_73\": 73,\n    \"new_74\": 74,\n    \"new_75\": 75,\n    \"new_76\": 76,\n    \"new_77\": 77,\n    \"new_78\": 78,\n    \"new_79\": 79,\n    \"new_80\": 80,\n}\n\ndef total():\n    return sum(VALUES.values())\n"
+    }
+  ],
+  "totals": {
+    "added": 320,
+    "deleted": 80,
+    "net": 240
+  },
+  "telemetry_log_root": "C:\\Users\\pengyongye\\AppData\\Roaming\\Code\\logs\\20261022T113330",
+  "telemetry_events": [],
+  "github_delivery_verified": false,
+  "server_metrics_for_test_day_available": false
+}

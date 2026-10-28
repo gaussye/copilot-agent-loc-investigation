@@ -1,0 +1,211 @@
+{
+  "queried_at_utc": "2026-10-28T00:49:03.863044+00:00",
+  "endpoint": "enterprises/gye/copilot/metrics/reports/users-1-day?day=2026-10-26",
+  "local_api_account": "gaussye",
+  "report_user": "gye6666",
+  "http_status": 200,
+  "report_day": "2026-10-26",
+  "matching_user_records": [
+    {
+      "user_id": 274194146,
+      "user_login": "gye6666",
+      "day": "2026-10-26",
+      "enterprise_id": "590626",
+      "user_initiated_interaction_count": 2,
+      "code_generation_activity_count": 2,
+      "code_acceptance_activity_count": 0,
+      "totals_by_ide": [
+        {
+          "ide": "vscode",
+          "user_initiated_interaction_count": 2,
+          "code_generation_activity_count": 2,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 160,
+          "loc_deleted_sum": 40,
+          "last_known_plugin_version": {
+            "sampled_at": "2026-10-26T01:39:13.936Z",
+            "plugin": "unknown",
+            "plugin_version": "unknown"
+          },
+          "last_known_ide_version": {
+            "sampled_at": "2026-10-26T01:39:13.936Z",
+            "ide_version": "1.142.0"
+          }
+        }
+      ],
+      "totals_by_feature": [
+        {
+          "feature": "agent_edit",
+          "user_initiated_interaction_count": 0,
+          "code_generation_activity_count": 2,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 160,
+          "loc_deleted_sum": 40
+        },
+        {
+          "feature": "chat_panel_agent_mode",
+          "user_initiated_interaction_count": 1,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        },
+        {
+          "feature": "chat_panel_custom_mode",
+          "user_initiated_interaction_count": 1,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "totals_by_language_feature": [
+        {
+          "language": "unknown",
+          "feature": "agent_edit",
+          "code_generation_activity_count": 2,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 160,
+          "loc_deleted_sum": 40
+        },
+        {
+          "language": "unknown",
+          "feature": "chat_panel_agent_mode",
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        },
+        {
+          "language": "unknown",
+          "feature": "chat_panel_custom_mode",
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "totals_by_language_model": [
+        {
+          "language": "unknown",
+          "model": "gpt-6-luna",
+          "code_generation_activity_count": 2,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 160,
+          "loc_deleted_sum": 40
+        }
+      ],
+      "totals_by_model_feature": [
+        {
+          "model": "gpt-6-luna",
+          "feature": "agent_edit",
+          "user_initiated_interaction_count": 0,
+          "code_generation_activity_count": 2,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 160,
+          "loc_deleted_sum": 40
+        },
+        {
+          "model": "gpt-6-luna",
+          "feature": "chat_panel_agent_mode",
+          "user_initiated_interaction_count": 1,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        },
+        {
+          "model": "gpt-6-luna",
+          "feature": "chat_panel_custom_mode",
+          "user_initiated_interaction_count": 1,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "used_agent": true,
+      "used_chat": true,
+      "loc_suggested_to_add_sum": 0,
+      "loc_suggested_to_delete_sum": 0,
+      "loc_added_sum": 160,
+      "loc_deleted_sum": 40,
+      "used_cli": false,
+      "used_copilot_coding_agent": false,
+      "used_copilot_cloud_agent": false,
+      "ai_adoption_phase": {
+        "phase_number": 1,
+        "phase": "Phase 1",
+        "version": "v1"
+      },
+      "ai_credits_used": 1.8965515000000002,
+      "used_copilot_app": false,
+      "totals_by_skill": [],
+      "totals_by_custom_agent": [],
+      "totals_by_mcp": [],
+      "totals_by_slash_cmd": [],
+      "distinct_skill_use_count": 0,
+      "distinct_custom_agent_use_count": 0,
+      "distinct_mcp_use_count": 0,
+      "distinct_slash_cmd_use_count": 0,
+      "totals_by_plugin": [],
+      "distinct_plugin_use_count": 0,
+      "totals_by_client": [
+        {
+          "client": "vscode",
+          "request_count": 18,
+          "session_count": 4,
+          "token_usage": {
+            "avg_tokens_per_request": 16558.72,
+            "output_tokens_sum": 5822,
+            "prompt_tokens_sum": 292235
+          },
+          "totals_by_model": [
+            {
+              "model": "gpt-6-luna",
+              "model_selection_mode": "user_selected",
+              "request_count": 10,
+              "token_usage": {
+                "avg_tokens_per_request": 29170.1,
+                "output_tokens_sum": 5680,
+                "prompt_tokens_sum": 286021
+              }
+            },
+            {
+              "model": "unknown",
+              "model_selection_mode": "user_selected",
+              "request_count": 8,
+              "token_usage": {
+                "avg_tokens_per_request": 794.5,
+                "output_tokens_sum": 142,
+                "prompt_tokens_sum": 6214
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
