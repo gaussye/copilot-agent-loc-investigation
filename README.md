@@ -412,20 +412,6 @@ X-GitHub-Api-Version: 2026-03-10
 | 最终证据采集时间 | `2026-10-28T09:45:44.194519+08:00` |
 | 最终文件 SHA-256 | `4c3675924615acad6d2074fd14baaae5114afa2fb89b8bd914f97c2ddc6c4fdd` |
 
-### 失败尝试与环境变化
-
-09:31 的第一次受控请求使用 VS Code **1.142.0 / Copilot Chat 0.70.0**，请求 ID 为 `request_a570ca2c-685f-4764-83e8-36fdb963d859`。扩展日志报告：
-
-> Failed to get copilot token due to: Your Copilot access has been revoked by the providing organization or enterprise. You are currently logged in as gye6666.
-
-该次请求没有修改文件，之后仍核对到 25 行 CRLF 基线及原始哈希。用户处理 VS Code 问题并重启后，安装版本已变为 **1.143.1 / 0.71.0**，重新登录账号仍是 `gye6666`。成功测试是在另一个新 Chat 中、单独获得发送批准后执行，未重置或手工修正 Agent 输出。
-
-因此，本轮不是与 26 日完全相同客户端版本的重复实验。10 月 22、23、26 日共 12 个历史测试文件及 LoC Probe 定义均保持不变。
-
-原始失败会话里还观察到 Try Again 和问候消息，因此不能假定该账号当天只有一次交互。本轮自动化自身提交了两次受控 CL 请求，其中一次失败、一次成功编辑；其他消息不能混入“成功文件编辑次数”。
-
-成功执行时状态栏仍显示过 `Quota reached`，但实际任务完成并写入了预期内容；该提示不能在本次记录中代替执行结果。未修改预算、企业权限或自定义 Agent 定义。
-
 ### API 查询时间线与观察口径
 
 测试前于 **2026-10-28 09:30:36 北京时间**调用 `users-28-day/latest`，HTTP 200，报表范围为 **2026-09-29 至 2026-10-26**，尚不覆盖本轮 **UTC 2026-10-28**。
@@ -464,10 +450,44 @@ X-GitHub-Api-Version: 2026-03-10
 
 版本采样时间为 `2026-10-28T01:45:25.217Z`，即北京时间 09:45:25.217。它是版本元数据采样时间，不是文件编辑事件的时间或编辑行数已入账的证明。
 
-以下是原始报表用户记录中的完整 `totals_by_feature` 字段，仅做格式化。**完整目标用户原始数据**见 [10 月 30 日 API 快照](metrics-enterprise-gye-gye6666-20261030-0853-refresh-raw.json)；该文件保留 28 天范围内 `gye6666` 的全部原始记录，查看本轮时选择 `day == "2026-10-28"`，不要混入 26 日的数据。
+### API 原始用户日记录
+
+以下是 **2026-10-30 08:53:48 北京时间查询返回的 `gye6666` 在 UTC 2026-10-28 的完整用户日记录**，仅做 JSON 格式化，保留全部字段和值，不是只摘录 `totals_by_feature`。数据来自下载的 NDJSON 报表，不是 REST 接口返回下载链接的响应。
+
+完整采集快照见 [10 月 30 日 API 快照](metrics-enterprise-gye-gye6666-20261030-0853-refresh-raw.json)，其中还包含该账号其他日期的记录；下面只展示与本轮测试对应的 28 日记录。采集程序添加的外层查询元数据不在下面代码块中。
 
 ```json
 {
+  "report_start_day": "2026-10-01",
+  "report_end_day": "2026-10-28",
+  "day": "2026-10-28",
+  "enterprise_id": "590626",
+  "user_id": 274194146,
+  "user_login": "gye6666",
+  "user_initiated_interaction_count": 5,
+  "code_generation_activity_count": 0,
+  "code_acceptance_activity_count": 0,
+  "totals_by_ide": [
+    {
+      "ide": "vscode",
+      "user_initiated_interaction_count": 5,
+      "code_generation_activity_count": 0,
+      "code_acceptance_activity_count": 0,
+      "loc_suggested_to_add_sum": 0,
+      "loc_suggested_to_delete_sum": 0,
+      "loc_added_sum": 0,
+      "loc_deleted_sum": 0,
+      "last_known_plugin_version": {
+        "sampled_at": "2026-10-28T01:45:25.217Z",
+        "plugin": "copilot-chat",
+        "plugin_version": "0.71.0"
+      },
+      "last_known_ide_version": {
+        "sampled_at": "2026-10-28T01:45:25.217Z",
+        "ide_version": "1.143.1"
+      }
+    }
+  ],
   "totals_by_feature": [
     {
       "feature": "chat_panel_custom_mode",
@@ -478,6 +498,103 @@ X-GitHub-Api-Version: 2026-03-10
       "loc_suggested_to_delete_sum": 0,
       "loc_added_sum": 0,
       "loc_deleted_sum": 0
+    }
+  ],
+  "totals_by_language_feature": [
+    {
+      "language": "unknown",
+      "feature": "chat_panel_custom_mode",
+      "code_generation_activity_count": 0,
+      "code_acceptance_activity_count": 0,
+      "loc_suggested_to_add_sum": 0,
+      "loc_suggested_to_delete_sum": 0,
+      "loc_added_sum": 0,
+      "loc_deleted_sum": 0
+    }
+  ],
+  "totals_by_language_model": [
+    {
+      "language": "unknown",
+      "model": "gpt-6-luna",
+      "code_generation_activity_count": 0,
+      "code_acceptance_activity_count": 0,
+      "loc_suggested_to_add_sum": 0,
+      "loc_suggested_to_delete_sum": 0,
+      "loc_added_sum": 0,
+      "loc_deleted_sum": 0
+    }
+  ],
+  "totals_by_model_feature": [
+    {
+      "model": "gpt-6-luna",
+      "feature": "chat_panel_custom_mode",
+      "user_initiated_interaction_count": 5,
+      "code_generation_activity_count": 0,
+      "code_acceptance_activity_count": 0,
+      "loc_suggested_to_add_sum": 0,
+      "loc_suggested_to_delete_sum": 0,
+      "loc_added_sum": 0,
+      "loc_deleted_sum": 0
+    }
+  ],
+  "used_agent": false,
+  "used_chat": true,
+  "loc_suggested_to_add_sum": 0,
+  "loc_suggested_to_delete_sum": 0,
+  "loc_added_sum": 0,
+  "loc_deleted_sum": 0,
+  "used_cli": false,
+  "used_copilot_coding_agent": false,
+  "used_copilot_cloud_agent": false,
+  "ai_adoption_phase": {
+    "phase_number": 1,
+    "phase": "Phase 1",
+    "version": "v1"
+  },
+  "ai_credits_used": 0.6303314999999999,
+  "used_copilot_app": false,
+  "totals_by_skill": [],
+  "totals_by_custom_agent": [],
+  "totals_by_mcp": [],
+  "totals_by_slash_cmd": [],
+  "distinct_skill_use_count": 0,
+  "distinct_custom_agent_use_count": 0,
+  "distinct_mcp_use_count": 0,
+  "distinct_slash_cmd_use_count": 0,
+  "totals_by_plugin": [],
+  "distinct_plugin_use_count": 0,
+  "totals_by_client": [
+    {
+      "client": "vscode",
+      "request_count": 11,
+      "session_count": 1,
+      "token_usage": {
+        "avg_tokens_per_request": 7512.55,
+        "output_tokens_sum": 6248,
+        "prompt_tokens_sum": 76390
+      },
+      "totals_by_model": [
+        {
+          "model": "gpt-6-luna",
+          "model_selection_mode": "user_selected",
+          "request_count": 7,
+          "token_usage": {
+            "avg_tokens_per_request": 11367.57,
+            "output_tokens_sum": 6059,
+            "prompt_tokens_sum": 73514
+          }
+        },
+        {
+          "model": "unknown",
+          "model_selection_mode": "user_selected",
+          "request_count": 4,
+          "token_usage": {
+            "avg_tokens_per_request": 766.25,
+            "output_tokens_sum": 189,
+            "prompt_tokens_sum": 2876
+          }
+        }
+      ]
     }
   ]
 }
