@@ -1,0 +1,61 @@
+{
+  "queried_at_utc": "2026-10-30T00:53:48.320536+00:00",
+  "enterprise": "gye",
+  "actor": "gye6666",
+  "test_day_utc": "2026-10-28",
+  "raw_api_snapshot": "metrics-enterprise-gye-gye6666-20261030-0853-refresh-raw.json",
+  "client_manifest": "loc-ui-test-20261028-cl.json",
+  "http_status": 200,
+  "report_start_day": "2026-10-01",
+  "report_end_day": "2026-10-28",
+  "test_day_covered": true,
+  "test_day_user_record_count": 1,
+  "status": "custom_mode_activity_present_actual_edit_loc_not_reflected",
+  "client": {
+    "successful_controlled_file_edits": 1,
+    "harness": "Local",
+    "agent": "LoC Probe",
+    "vscode": "1.143.1",
+    "copilot_chat": "0.71.0",
+    "loc_added_sum": 80,
+    "loc_deleted_sum": 20,
+    "net": 60,
+    "keep_clicked": true,
+    "request_id": "request_a3f28585-fde1-4a2f-9281-69300e8e66b3"
+  },
+  "server": {
+    "user_initiated_interaction_count": 5,
+    "chat_panel_custom_mode_interactions": 5,
+    "chat_panel_agent_mode_present": false,
+    "agent_edit_present": false,
+    "code_generation_activity_count": 0,
+    "code_acceptance_activity_count": 0,
+    "loc_suggested_to_add_sum": 0,
+    "loc_suggested_to_delete_sum": 0,
+    "loc_added_sum": 0,
+    "loc_deleted_sum": 0,
+    "used_agent": false,
+    "used_chat": true,
+    "ide_version": "1.143.1",
+    "plugin": "copilot-chat",
+    "plugin_version": "0.71.0",
+    "version_sampled_at_utc": "2026-10-28T01:45:25.217Z",
+    "totals_by_custom_agent": [],
+    "distinct_custom_agent_use_count": 0,
+    "vscode_client_request_count": 11,
+    "vscode_client_session_count": 1
+  },
+  "difference_client_minus_server": {
+    "loc_added_sum": 80,
+    "loc_deleted_sum": 20,
+    "net": 60
+  },
+  "interpretation": [
+    "The report now covers the test day and contains the correct user's custom-mode interaction activity, but no agent_edit feature row and no actual edit LoC.",
+    "The successful controlled Local/custom edit is +80/-20 locally; this snapshot has actual LoC 0/0 across every returned breakdown.",
+    "Five daily interactions must not be interpreted as five successful controlled edits: failed attempts, retry and greeting activity were also observed.",
+    "Version sampled_at is IDE/plugin sampling metadata, not an edit event timestamp or proof of per-request metric delivery.",
+    "No individual request identifiers are present in this daily metrics record; delivery of the successful edit telemetry and the root cause of missing LoC remain unverified.",
+    "This is a discrepancy in the current snapshot, not proof of permanent data loss or a regression caused by the client update."
+  ]
+}

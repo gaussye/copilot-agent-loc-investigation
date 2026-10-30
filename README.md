@@ -1,6 +1,6 @@
 # GitHub Copilot 本地测试与 API 数据对照
 
-整理日期：2026-10-28。本文使用已保存的测试证据及 API 快照，不代表重新调用 API。
+整理日期：2026-10-28；最后更新：2026-10-30。本文使用已保存的测试证据及 API 快照，各次查询时间分别记录。
 
 记录范围：第 1 至 8 节为 **10 月 26 日四组测试**；第 9 节为 **10 月 28 日单独 CL 重测**。两天的客户端版本和数据分别记录，不合并对账。
 
@@ -426,13 +426,91 @@ X-GitHub-Api-Version: 2026-03-10
 
 成功执行时状态栏仍显示过 `Quota reached`，但实际任务完成并写入了预期内容；该提示不能在本次记录中代替执行结果。未修改预算、企业权限或自定义 Agent 定义。
 
-### 后续 API 观察口径
+### API 查询时间线与观察口径
 
 测试前于 **2026-10-28 09:30:36 北京时间**调用 `users-28-day/latest`，HTTP 200，报表范围为 **2026-09-29 至 2026-10-26**，尚不覆盖本轮 **UTC 2026-10-28**。
 
-后续应按企业 `gye`、用户 `gye6666`、UTC 日期 `2026-10-28` 查询。该 UTC 日对应北京时间 `[2026-10-28 08:00, 2026-10-29 08:00)`。先检查报表是否覆盖该日，再核对 `agent_edit` 的实际增删与 `chat_panel_custom_mode` 的交互。
+查询企业 `gye`、用户 `gye6666`、UTC 日期 `2026-10-28`。该 UTC 日对应北京时间 `[2026-10-28 08:00, 2026-10-29 08:00)`。
 
-本次成功受控编辑可供对照的本地量是 **+80 / -20**，但不能要求整天的交互 / 生成次数必然为 1，也不能排除同日其他活动。当前未验证后台入账，没有捕获本轮本地 acceptance 日志事件也不等于遥测没有送达。
+```http
+GET https://api.github.com/enterprises/gye/copilot/metrics/reports/users-28-day/latest
+Accept: application/vnd.github+json
+X-GitHub-Api-Version: 2026-03-10
+```
+
+| 查询时间（北京时间） | HTTP | 报表范围 | UTC 10 月 28 日覆盖情况 |
+|---|---:|---|---|
+| 2026-10-28 09:30:36 | 200 | 2026-09-29 至 2026-10-26 | 未覆盖，测试前基线 |
+| 2026-10-29 10:36:14 | 200 | 2026-09-30 至 2026-10-27 | 未覆盖，不能将缺少记录解释为 0 行 |
+| **2026-10-30 08:53:48** | **200** | **2026-10-01 至 2026-10-28** | **已覆盖，目标用户当天有 1 条记录** |
+
+### 2026-10-30 API 返回结果
+
+**最新快照中已出现 10 月 28 日的自定义模式交互，但未出现 `agent_edit`，实际编辑 LoC 为 0 / 0。**
+
+| 指标 | UTC 2026-10-28 的 API 结果 |
+|---|---|
+| 默认 Agent：`chat_panel_agent_mode` | 未出现该分类 |
+| Custom Agent：`chat_panel_custom_mode` | **5 次交互** |
+| IDE / 插件 | **VS Code 1.143.1 / Copilot Chat 0.71.0** |
+| 模型 | `gpt-6-luna` |
+| 代码生成 / 接受活动次数 | **0 / 0** |
+| 建议新增 / 删除行数 | 0 / 0 |
+| `loc_added_sum` / `loc_deleted_sum` | **0 / 0** |
+| `agent_edit` 分类 | **未出现** |
+| `used_agent` / `used_chat` | `false` / `true`，保留原始值，不能代替本地执行事实 |
+| `totals_by_custom_agent` | `[]` |
+| `totals_by_client` 中的 `vscode` | `request_count = 11`，`session_count = 1`；是另一个统计维度，不能逐请求关联 LoC |
+
+版本采样时间为 `2026-10-28T01:45:25.217Z`，即北京时间 09:45:25.217。它是版本元数据采样时间，不是文件编辑事件的时间或编辑行数已入账的证明。
+
+以下是原始报表用户记录中的完整 `totals_by_feature` 字段，仅做格式化。**完整目标用户原始数据**见 [10 月 30 日 API 快照](metrics-enterprise-gye-gye6666-20261030-0853-refresh-raw.json)；该文件保留 28 天范围内 `gye6666` 的全部原始记录，查看本轮时选择 `day == "2026-10-28"`，不要混入 26 日的数据。
+
+```json
+{
+  "totals_by_feature": [
+    {
+      "feature": "chat_panel_custom_mode",
+      "user_initiated_interaction_count": 5,
+      "code_generation_activity_count": 0,
+      "code_acceptance_activity_count": 0,
+      "loc_suggested_to_add_sum": 0,
+      "loc_suggested_to_delete_sum": 0,
+      "loc_added_sum": 0,
+      "loc_deleted_sum": 0
+    }
+  ]
+}
+```
+
+### 本地与 API 对照及当前结论
+
+| 实际编辑 LoC | 成功 CL 测试的本地记录 | API 用户日统计 | 本地减 API |
+|---|---:|---:|---:|
+| 新增 | 80 | 0 | 80 |
+| 删除 | 20 | 0 | 20 |
+| 净增 | 60 | 0 | 60 |
+
+本地成功编辑及 Keep 已确认；API 中也有自定义模式交互，但本次快照尚未体现该编辑的 LoC。**不能将此解释为最后一次操作失败，也不能从聊天分类 LoC 为 0 单独推断漏报：关键在于整个用户日记录及所有已返回分组的实际 LoC 都为 0，且没有 `agent_edit`。**
+
+编辑执行与指标统计是不同链路：文件落盘不等于编辑遥测已成功产生、发送、接收、分类并聚合到报表。现有日志中可见成功请求的 `apply_patch` 元数据，但未捕获本轮 acceptance 事件；未捕获日志不能证明事件未产生或未上传。
+
+当前根因未确认，仍需区分异步处理未完成，或编辑遥测产生、传输、分类 / 聚合环节的问题。不能据此认定数据永久丢失、客户端升级引入回归，或自定义 Agent 不支持文件编辑统计。
+
+本次成功受控编辑的本地量是 **+80 / -20**，但当天还观察到失败、重试和问候活动。**5 次交互不等于 5 次成功编辑**，不能要求日汇总的交互 / 生成次数必然为 1，也不能排除同日其他活动。API 没有请求级标识，尚未逐请求验证成功编辑的遥测送达。
+
+### 处理窗口与后续复查
+
+报表覆盖活动日不代表该日所有指标都已处理完成。截至 10 月 30 日 08:53 的本次快照，仍未过完下述两个完整 UTC 日窗口：
+
+| 官方说明 | UTC 2026-10-28 对应的北京时间观察节点 |
+|---|---|
+| [Data freshness](https://docs.github.com/en/copilot/concepts/billing-and-usage/copilot-usage-metrics/copilot-metrics#data-freshness)：活动日结束后两个完整 UTC 日 | **2026-10-31 08:00** |
+| [Delayed telemetry](https://docs.github.com/en/copilot/reference/copilot-usage-metrics/reconciling-usage-metrics#delayed-telemetry)：通常在三个完整 UTC 日内完成，建议该窗口后重新导出 | **2026-11-01 08:00**，更保守的复查节点 |
+
+以上是官方文档的观察口径，不是对本轮数据一定回填或届时更新的保证。若窗口后仍无 `agent_edit` 和实际编辑 LoC，应将成功请求 ID、本地差异、Keep 记录、客户端版本及后续 API 原始快照一起用于排查。
+
+### 本轮证据
 
 | 本轮证据 | 用途 |
 |---|---|
@@ -440,3 +518,6 @@ X-GitHub-Api-Version: 2026-03-10
 | [loc-ui-test-20261028-baseline-observed.json](loc-ui-test-20261028-baseline-observed.json) | 新文件修改前基线 |
 | [loc-ui-test-20261028-observed.json](loc-ui-test-20261028-observed.json) | 点击 Keep 后的实际内容、差异、行数、换行和哈希 |
 | [metrics-enterprise-gye-gye6666-20261028-cl-baseline-raw.json](metrics-enterprise-gye-gye6666-20261028-cl-baseline-raw.json) | 09:30 查询的 API 原始目标用户快照，尚不包含 UTC 10 月 28 日 |
+| [metrics-enterprise-gye-gye6666-20261029-1035-refresh-raw.json](metrics-enterprise-gye-gye6666-20261029-1035-refresh-raw.json) | 10 月 29 日 10:36 查询，报表仅至 27 日；实际查询时间以文件字段为准 |
+| [metrics-enterprise-gye-gye6666-20261030-0853-refresh-raw.json](metrics-enterprise-gye-gye6666-20261030-0853-refresh-raw.json) | 10 月 30 日 08:53 查询，已覆盖 28 日，保留目标账号全部原始字段 |
+| [loc-ui-test-20261028-cl-server-comparison-20261030.json](loc-ui-test-20261028-cl-server-comparison-20261030.json) | 本地 +80 / -20 与 API 0 / 0 的对账、功能分组状态及解释限制 |
