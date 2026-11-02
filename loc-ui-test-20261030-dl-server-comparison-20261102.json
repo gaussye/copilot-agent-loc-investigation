@@ -1,0 +1,68 @@
+{
+  "queried_at_utc": "2026-11-02T03:00:19.639276+00:00",
+  "enterprise": "gye",
+  "actor": "gye6666",
+  "test_day_utc": "2026-10-30",
+  "http_status": 200,
+  "raw_api_snapshot": "metrics-enterprise-gye-gye6666-20261102-1100-refresh-raw.json",
+  "client_manifest": "loc-ui-test-20261030-dl.json",
+  "report_start_day": "2026-10-04",
+  "report_end_day": "2026-10-31",
+  "test_day_covered": true,
+  "test_day_user_record_count": 1,
+  "status": "default_mode_activity_present_actual_edit_loc_not_reflected",
+  "client": {
+    "successful_controlled_file_edits": 1,
+    "harness": "Local",
+    "agent": "Agent",
+    "vscode": "1.143.1",
+    "copilot_chat": "0.71.0",
+    "loc_added_sum": 80,
+    "loc_deleted_sum": 20,
+    "net": 60,
+    "keep_clicked": true,
+    "request_id": "request_9ae3199a-a208-4ab2-b9ad-217b59a06f81"
+  },
+  "server": {
+    "user_initiated_interaction_count": 1,
+    "chat_panel_agent_mode_interactions": 1,
+    "chat_panel_custom_mode_present": false,
+    "agent_edit_present": false,
+    "code_generation_activity_count": 0,
+    "code_acceptance_activity_count": 0,
+    "loc_suggested_to_add_sum": 0,
+    "loc_suggested_to_delete_sum": 0,
+    "loc_added_sum": 0,
+    "loc_deleted_sum": 0,
+    "used_agent": true,
+    "used_chat": true,
+    "used_local_byok": false,
+    "ide_version": "1.143.1",
+    "plugin": "copilot-chat",
+    "plugin_version": "0.71.0",
+    "version_sampled_at_utc": "2026-10-30T02:05:41.380Z",
+    "vscode_client_request_count": 6,
+    "vscode_client_session_count": 1
+  },
+  "difference_client_minus_server": {
+    "loc_added_sum": 80,
+    "loc_deleted_sum": 20,
+    "net": 60
+  },
+  "refreshed_oct28_cl": {
+    "test_day_utc": "2026-10-28",
+    "custom_mode_interactions": 5,
+    "agent_edit_present": false,
+    "loc_added_sum": 0,
+    "loc_deleted_sum": 0
+  },
+  "interpretation": [
+    "The report covers October 30 and records one default-agent-mode interaction, but no agent_edit row or actual edit LoC.",
+    "The successful controlled DL edit is +80/-20 locally; this snapshot has actual LoC 0/0 across every returned activity breakdown.",
+    "The same refresh still reports October 28 CL actual LoC as 0/0 with no agent_edit.",
+    "Missing actual edit LoC is therefore not exclusive to custom mode in these controlled Local-harness tests. The October 26 half-count cannot be attributed to custom-agent exclusion on this evidence.",
+    "The DL two-full-UTC-day window has elapsed, while the more conservative three-day reconciliation checkpoint is November 3 at 08:00 UTC+8.",
+    "The daily report contains no request-level identifiers. A matching day, account, version or interaction count does not prove receipt of this individual edit telemetry.",
+    "The missing LoC root cause and whether the report will later be revised remain unverified."
+  ]
+}

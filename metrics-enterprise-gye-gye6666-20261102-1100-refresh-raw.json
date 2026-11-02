@@ -1,0 +1,1135 @@
+{
+  "queried_at_utc": "2026-11-02T03:00:19.639276+00:00",
+  "scope": "enterprise",
+  "slug": "gye",
+  "local_api_account": "gaussye",
+  "report_user": "gye6666",
+  "test_utc_day": "2026-10-30",
+  "authentication_source": "existing_local_gh_login",
+  "endpoint": "enterprises/gye/copilot/metrics/reports/users-28-day/latest",
+  "http_status": 200,
+  "status": "retrieved",
+  "report_start_day": "2026-10-04",
+  "report_end_day": "2026-10-31",
+  "matching_user_records": [
+    {
+      "report_start_day": "2026-10-04",
+      "report_end_day": "2026-10-31",
+      "day": "2026-10-26",
+      "enterprise_id": "590626",
+      "user_id": 274194146,
+      "user_login": "gye6666",
+      "user_initiated_interaction_count": 2,
+      "code_generation_activity_count": 2,
+      "code_acceptance_activity_count": 0,
+      "totals_by_ide": [
+        {
+          "ide": "vscode",
+          "user_initiated_interaction_count": 2,
+          "code_generation_activity_count": 2,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 160,
+          "loc_deleted_sum": 40,
+          "last_known_plugin_version": {
+            "sampled_at": "2026-10-26T01:39:13.936Z",
+            "plugin": "unknown",
+            "plugin_version": "unknown"
+          },
+          "last_known_ide_version": {
+            "sampled_at": "2026-10-26T01:39:13.936Z",
+            "ide_version": "1.142.0"
+          }
+        }
+      ],
+      "totals_by_feature": [
+        {
+          "feature": "agent_edit",
+          "user_initiated_interaction_count": 0,
+          "code_generation_activity_count": 2,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 160,
+          "loc_deleted_sum": 40
+        },
+        {
+          "feature": "chat_panel_agent_mode",
+          "user_initiated_interaction_count": 1,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        },
+        {
+          "feature": "chat_panel_custom_mode",
+          "user_initiated_interaction_count": 1,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "totals_by_language_feature": [
+        {
+          "language": "unknown",
+          "feature": "agent_edit",
+          "code_generation_activity_count": 2,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 160,
+          "loc_deleted_sum": 40
+        },
+        {
+          "language": "unknown",
+          "feature": "chat_panel_agent_mode",
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        },
+        {
+          "language": "unknown",
+          "feature": "chat_panel_custom_mode",
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "totals_by_language_model": [
+        {
+          "language": "unknown",
+          "model": "gpt-6-luna",
+          "code_generation_activity_count": 2,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 160,
+          "loc_deleted_sum": 40
+        }
+      ],
+      "totals_by_model_feature": [
+        {
+          "model": "gpt-6-luna",
+          "feature": "agent_edit",
+          "user_initiated_interaction_count": 0,
+          "code_generation_activity_count": 2,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 160,
+          "loc_deleted_sum": 40
+        },
+        {
+          "model": "gpt-6-luna",
+          "feature": "chat_panel_agent_mode",
+          "user_initiated_interaction_count": 1,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        },
+        {
+          "model": "gpt-6-luna",
+          "feature": "chat_panel_custom_mode",
+          "user_initiated_interaction_count": 1,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "used_agent": true,
+      "used_chat": true,
+      "loc_suggested_to_add_sum": 0,
+      "loc_suggested_to_delete_sum": 0,
+      "loc_added_sum": 160,
+      "loc_deleted_sum": 40,
+      "used_cli": false,
+      "used_copilot_coding_agent": false,
+      "used_copilot_cloud_agent": false,
+      "ai_adoption_phase": {
+        "phase_number": 1,
+        "phase": "Phase 1",
+        "version": "v1"
+      },
+      "ai_credits_used": 1.8965515000000002,
+      "used_copilot_app": false,
+      "totals_by_skill": [],
+      "totals_by_custom_agent": [],
+      "totals_by_mcp": [],
+      "totals_by_slash_cmd": [],
+      "distinct_skill_use_count": 0,
+      "distinct_custom_agent_use_count": 0,
+      "distinct_mcp_use_count": 0,
+      "distinct_slash_cmd_use_count": 0,
+      "totals_by_plugin": [],
+      "distinct_plugin_use_count": 0,
+      "totals_by_client": [
+        {
+          "client": "vscode",
+          "request_count": 18,
+          "session_count": 4,
+          "token_usage": {
+            "avg_tokens_per_request": 16558.72,
+            "output_tokens_sum": 5822,
+            "prompt_tokens_sum": 292235
+          },
+          "totals_by_model": [
+            {
+              "model": "gpt-6-luna",
+              "model_selection_mode": "user_selected",
+              "request_count": 10,
+              "token_usage": {
+                "avg_tokens_per_request": 29170.1,
+                "output_tokens_sum": 5680,
+                "prompt_tokens_sum": 286021
+              }
+            },
+            {
+              "model": "unknown",
+              "model_selection_mode": "user_selected",
+              "request_count": 8,
+              "token_usage": {
+                "avg_tokens_per_request": 794.5,
+                "output_tokens_sum": 142,
+                "prompt_tokens_sum": 6214
+              }
+            }
+          ]
+        }
+      ],
+      "used_local_byok": false
+    },
+    {
+      "report_start_day": "2026-10-04",
+      "report_end_day": "2026-10-31",
+      "day": "2026-10-28",
+      "enterprise_id": "590626",
+      "user_id": 274194146,
+      "user_login": "gye6666",
+      "user_initiated_interaction_count": 5,
+      "code_generation_activity_count": 0,
+      "code_acceptance_activity_count": 0,
+      "totals_by_ide": [
+        {
+          "ide": "vscode",
+          "user_initiated_interaction_count": 5,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0,
+          "last_known_plugin_version": {
+            "sampled_at": "2026-10-28T01:45:25.217Z",
+            "plugin": "copilot-chat",
+            "plugin_version": "0.71.0"
+          },
+          "last_known_ide_version": {
+            "sampled_at": "2026-10-28T01:45:25.217Z",
+            "ide_version": "1.143.1"
+          }
+        }
+      ],
+      "totals_by_feature": [
+        {
+          "feature": "chat_panel_custom_mode",
+          "user_initiated_interaction_count": 5,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "totals_by_language_feature": [
+        {
+          "language": "unknown",
+          "feature": "chat_panel_custom_mode",
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "totals_by_language_model": [
+        {
+          "language": "unknown",
+          "model": "gpt-6-luna",
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "totals_by_model_feature": [
+        {
+          "model": "gpt-6-luna",
+          "feature": "chat_panel_custom_mode",
+          "user_initiated_interaction_count": 5,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "used_agent": false,
+      "used_chat": true,
+      "loc_suggested_to_add_sum": 0,
+      "loc_suggested_to_delete_sum": 0,
+      "loc_added_sum": 0,
+      "loc_deleted_sum": 0,
+      "used_cli": false,
+      "used_copilot_coding_agent": false,
+      "used_copilot_cloud_agent": false,
+      "ai_adoption_phase": {
+        "phase_number": 1,
+        "phase": "Phase 1",
+        "version": "v1"
+      },
+      "ai_credits_used": 0.6303314999999999,
+      "used_copilot_app": false,
+      "totals_by_skill": [],
+      "totals_by_custom_agent": [],
+      "totals_by_mcp": [],
+      "totals_by_slash_cmd": [],
+      "distinct_skill_use_count": 0,
+      "distinct_custom_agent_use_count": 0,
+      "distinct_mcp_use_count": 0,
+      "distinct_slash_cmd_use_count": 0,
+      "totals_by_plugin": [],
+      "distinct_plugin_use_count": 0,
+      "totals_by_client": [
+        {
+          "client": "vscode",
+          "request_count": 11,
+          "session_count": 1,
+          "token_usage": {
+            "avg_tokens_per_request": 7512.55,
+            "output_tokens_sum": 6248,
+            "prompt_tokens_sum": 76390
+          },
+          "totals_by_model": [
+            {
+              "model": "gpt-6-luna",
+              "model_selection_mode": "user_selected",
+              "request_count": 7,
+              "token_usage": {
+                "avg_tokens_per_request": 11367.57,
+                "output_tokens_sum": 6059,
+                "prompt_tokens_sum": 73514
+              }
+            },
+            {
+              "model": "unknown",
+              "model_selection_mode": "user_selected",
+              "request_count": 4,
+              "token_usage": {
+                "avg_tokens_per_request": 766.25,
+                "output_tokens_sum": 189,
+                "prompt_tokens_sum": 2876
+              }
+            }
+          ]
+        }
+      ],
+      "used_local_byok": false
+    },
+    {
+      "report_start_day": "2026-10-04",
+      "report_end_day": "2026-10-31",
+      "day": "2026-10-10",
+      "enterprise_id": "590626",
+      "user_id": 274194146,
+      "user_login": "gye6666",
+      "user_initiated_interaction_count": 2,
+      "code_generation_activity_count": 0,
+      "code_acceptance_activity_count": 0,
+      "totals_by_ide": [
+        {
+          "ide": "vscode",
+          "user_initiated_interaction_count": 2,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0,
+          "last_known_plugin_version": {
+            "sampled_at": "2026-10-10T08:33:10.418Z",
+            "plugin": "copilot-chat",
+            "plugin_version": "0.69.0"
+          },
+          "last_known_ide_version": {
+            "sampled_at": "2026-10-10T08:33:10.418Z",
+            "ide_version": "1.141.0"
+          }
+        }
+      ],
+      "totals_by_feature": [
+        {
+          "feature": "chat_panel_agent_mode",
+          "user_initiated_interaction_count": 1,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        },
+        {
+          "feature": "chat_panel_custom_mode",
+          "user_initiated_interaction_count": 1,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "totals_by_language_feature": [
+        {
+          "language": "unknown",
+          "feature": "chat_panel_agent_mode",
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        },
+        {
+          "language": "unknown",
+          "feature": "chat_panel_custom_mode",
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "totals_by_language_model": [
+        {
+          "language": "unknown",
+          "model": "gpt-6.1-sol",
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "totals_by_model_feature": [
+        {
+          "model": "gpt-6.1-sol",
+          "feature": "chat_panel_agent_mode",
+          "user_initiated_interaction_count": 1,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        },
+        {
+          "model": "gpt-6.1-sol",
+          "feature": "chat_panel_custom_mode",
+          "user_initiated_interaction_count": 1,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "used_agent": true,
+      "used_chat": true,
+      "loc_suggested_to_add_sum": 0,
+      "loc_suggested_to_delete_sum": 0,
+      "loc_added_sum": 0,
+      "loc_deleted_sum": 0,
+      "used_cli": false,
+      "used_copilot_coding_agent": false,
+      "used_copilot_cloud_agent": false,
+      "ai_adoption_phase": {
+        "phase_number": 0,
+        "phase": "No Cohort",
+        "version": "v1"
+      },
+      "ai_credits_used": 13.74246,
+      "used_copilot_app": false,
+      "totals_by_skill": [],
+      "totals_by_custom_agent": [],
+      "totals_by_mcp": [],
+      "totals_by_slash_cmd": [],
+      "distinct_skill_use_count": 0,
+      "distinct_custom_agent_use_count": 0,
+      "distinct_mcp_use_count": 0,
+      "distinct_slash_cmd_use_count": 0,
+      "totals_by_plugin": [],
+      "distinct_plugin_use_count": 0
+    },
+    {
+      "report_start_day": "2026-10-04",
+      "report_end_day": "2026-10-31",
+      "day": "2026-10-16",
+      "enterprise_id": "590626",
+      "user_id": 274194146,
+      "user_login": "gye6666",
+      "user_initiated_interaction_count": 0,
+      "code_generation_activity_count": 0,
+      "code_acceptance_activity_count": 0,
+      "totals_by_ide": [],
+      "totals_by_feature": [],
+      "totals_by_language_feature": [],
+      "totals_by_language_model": [],
+      "totals_by_model_feature": [],
+      "used_agent": false,
+      "used_chat": false,
+      "loc_suggested_to_add_sum": 0,
+      "loc_suggested_to_delete_sum": 0,
+      "loc_added_sum": 0,
+      "loc_deleted_sum": 0,
+      "ai_adoption_phase": {
+        "phase_number": 1,
+        "phase": "Phase 1",
+        "version": "v1"
+      },
+      "ai_credits_used": 1.536036,
+      "totals_by_skill": [],
+      "totals_by_custom_agent": [],
+      "totals_by_mcp": [],
+      "totals_by_slash_cmd": [],
+      "distinct_skill_use_count": 0,
+      "distinct_custom_agent_use_count": 0,
+      "distinct_mcp_use_count": 0,
+      "distinct_slash_cmd_use_count": 0,
+      "totals_by_plugin": [],
+      "distinct_plugin_use_count": 0
+    },
+    {
+      "report_start_day": "2026-10-04",
+      "report_end_day": "2026-10-31",
+      "day": "2026-10-30",
+      "enterprise_id": "590626",
+      "user_id": 274194146,
+      "user_login": "gye6666",
+      "user_initiated_interaction_count": 1,
+      "code_generation_activity_count": 0,
+      "code_acceptance_activity_count": 0,
+      "totals_by_ide": [
+        {
+          "ide": "vscode",
+          "user_initiated_interaction_count": 1,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0,
+          "last_known_plugin_version": {
+            "sampled_at": "2026-10-30T02:05:41.380Z",
+            "plugin": "copilot-chat",
+            "plugin_version": "0.71.0"
+          },
+          "last_known_ide_version": {
+            "sampled_at": "2026-10-30T02:05:41.380Z",
+            "ide_version": "1.143.1"
+          }
+        }
+      ],
+      "totals_by_feature": [
+        {
+          "feature": "chat_panel_agent_mode",
+          "user_initiated_interaction_count": 1,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "totals_by_language_feature": [
+        {
+          "language": "unknown",
+          "feature": "chat_panel_agent_mode",
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "totals_by_language_model": [
+        {
+          "language": "unknown",
+          "model": "gpt-6-luna",
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "totals_by_model_feature": [
+        {
+          "model": "gpt-6-luna",
+          "feature": "chat_panel_agent_mode",
+          "user_initiated_interaction_count": 1,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "used_agent": true,
+      "used_chat": true,
+      "loc_suggested_to_add_sum": 0,
+      "loc_suggested_to_delete_sum": 0,
+      "loc_added_sum": 0,
+      "loc_deleted_sum": 0,
+      "used_cli": false,
+      "used_copilot_coding_agent": false,
+      "used_copilot_cloud_agent": false,
+      "ai_adoption_phase": {
+        "phase_number": 1,
+        "phase": "Phase 1",
+        "version": "v1"
+      },
+      "ai_credits_used": 0.5734725,
+      "used_copilot_app": false,
+      "totals_by_skill": [],
+      "totals_by_custom_agent": [],
+      "totals_by_mcp": [],
+      "totals_by_slash_cmd": [],
+      "distinct_skill_use_count": 0,
+      "distinct_custom_agent_use_count": 0,
+      "distinct_mcp_use_count": 0,
+      "distinct_slash_cmd_use_count": 0,
+      "totals_by_plugin": [],
+      "distinct_plugin_use_count": 0,
+      "totals_by_client": [
+        {
+          "client": "vscode",
+          "request_count": 6,
+          "session_count": 1,
+          "token_usage": {
+            "avg_tokens_per_request": 13159.67,
+            "output_tokens_sum": 1439,
+            "prompt_tokens_sum": 77519
+          },
+          "totals_by_model": [
+            {
+              "model": "gpt-6-luna",
+              "model_selection_mode": "user_selected",
+              "request_count": 2,
+              "token_usage": {
+                "avg_tokens_per_request": 37966.0,
+                "output_tokens_sum": 1237,
+                "prompt_tokens_sum": 74695
+              }
+            },
+            {
+              "model": "unknown",
+              "model_selection_mode": "user_selected",
+              "request_count": 4,
+              "token_usage": {
+                "avg_tokens_per_request": 756.5,
+                "output_tokens_sum": 202,
+                "prompt_tokens_sum": 2824
+              }
+            }
+          ]
+        }
+      ],
+      "used_local_byok": false
+    },
+    {
+      "report_start_day": "2026-10-04",
+      "report_end_day": "2026-10-31",
+      "day": "2026-10-11",
+      "enterprise_id": "590626",
+      "user_id": 274194146,
+      "user_login": "gye6666",
+      "user_initiated_interaction_count": 11,
+      "code_generation_activity_count": 3,
+      "code_acceptance_activity_count": 0,
+      "totals_by_ide": [
+        {
+          "ide": "vscode",
+          "user_initiated_interaction_count": 11,
+          "code_generation_activity_count": 3,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 18,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0,
+          "last_known_plugin_version": {
+            "sampled_at": "2026-10-11T07:04:39.971Z",
+            "plugin": "copilot-chat",
+            "plugin_version": "0.69.0"
+          },
+          "last_known_ide_version": {
+            "sampled_at": "2026-10-11T07:04:39.971Z",
+            "ide_version": "1.141.0"
+          }
+        }
+      ],
+      "totals_by_feature": [
+        {
+          "feature": "chat_panel_custom_mode",
+          "user_initiated_interaction_count": 7,
+          "code_generation_activity_count": 2,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 12,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        },
+        {
+          "feature": "chat_panel_agent_mode",
+          "user_initiated_interaction_count": 4,
+          "code_generation_activity_count": 1,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 6,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "totals_by_language_feature": [
+        {
+          "language": "python",
+          "feature": "chat_panel_custom_mode",
+          "code_generation_activity_count": 2,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 12,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        },
+        {
+          "language": "python",
+          "feature": "chat_panel_agent_mode",
+          "code_generation_activity_count": 1,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 6,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        },
+        {
+          "language": "unknown",
+          "feature": "chat_panel_agent_mode",
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        },
+        {
+          "language": "unknown",
+          "feature": "chat_panel_custom_mode",
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "totals_by_language_model": [
+        {
+          "language": "python",
+          "model": "gpt-6.1-sol",
+          "code_generation_activity_count": 3,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 18,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        },
+        {
+          "language": "unknown",
+          "model": "gpt-6.1-sol",
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "totals_by_model_feature": [
+        {
+          "model": "gpt-6.1-sol",
+          "feature": "chat_panel_custom_mode",
+          "user_initiated_interaction_count": 7,
+          "code_generation_activity_count": 2,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 12,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        },
+        {
+          "model": "gpt-6.1-sol",
+          "feature": "chat_panel_agent_mode",
+          "user_initiated_interaction_count": 4,
+          "code_generation_activity_count": 1,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 6,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "used_agent": true,
+      "used_chat": true,
+      "loc_suggested_to_add_sum": 18,
+      "loc_suggested_to_delete_sum": 0,
+      "loc_added_sum": 0,
+      "loc_deleted_sum": 0,
+      "used_cli": false,
+      "used_copilot_coding_agent": false,
+      "used_copilot_cloud_agent": false,
+      "ai_adoption_phase": {
+        "phase_number": 0,
+        "phase": "No Cohort",
+        "version": "v1"
+      },
+      "ai_credits_used": 47.234415000000006,
+      "used_copilot_app": false,
+      "totals_by_skill": [],
+      "totals_by_custom_agent": [],
+      "totals_by_mcp": [],
+      "totals_by_slash_cmd": [],
+      "distinct_skill_use_count": 0,
+      "distinct_custom_agent_use_count": 0,
+      "distinct_mcp_use_count": 0,
+      "distinct_slash_cmd_use_count": 0,
+      "totals_by_plugin": [],
+      "distinct_plugin_use_count": 0
+    },
+    {
+      "report_start_day": "2026-10-04",
+      "report_end_day": "2026-10-31",
+      "day": "2026-10-14",
+      "enterprise_id": "590626",
+      "user_id": 274194146,
+      "user_login": "gye6666",
+      "user_initiated_interaction_count": 7,
+      "code_generation_activity_count": 7,
+      "code_acceptance_activity_count": 0,
+      "totals_by_ide": [
+        {
+          "ide": "vscode",
+          "user_initiated_interaction_count": 7,
+          "code_generation_activity_count": 7,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 234,
+          "loc_deleted_sum": 283,
+          "last_known_plugin_version": {
+            "sampled_at": "2026-10-14T06:18:50.134Z",
+            "plugin": "copilot-chat",
+            "plugin_version": "0.69.0"
+          },
+          "last_known_ide_version": {
+            "sampled_at": "2026-10-14T06:18:50.134Z",
+            "ide_version": "1.141.1"
+          }
+        }
+      ],
+      "totals_by_feature": [
+        {
+          "feature": "agent_edit",
+          "user_initiated_interaction_count": 0,
+          "code_generation_activity_count": 7,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 234,
+          "loc_deleted_sum": 283
+        },
+        {
+          "feature": "chat_panel_agent_mode",
+          "user_initiated_interaction_count": 7,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "totals_by_language_feature": [
+        {
+          "language": "python",
+          "feature": "agent_edit",
+          "code_generation_activity_count": 7,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 234,
+          "loc_deleted_sum": 283
+        },
+        {
+          "language": "python",
+          "feature": "chat_panel_agent_mode",
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "totals_by_language_model": [
+        {
+          "language": "python",
+          "model": "gpt-5.6-sol",
+          "code_generation_activity_count": 7,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 234,
+          "loc_deleted_sum": 283
+        }
+      ],
+      "totals_by_model_feature": [
+        {
+          "model": "gpt-5.6-sol",
+          "feature": "agent_edit",
+          "user_initiated_interaction_count": 0,
+          "code_generation_activity_count": 7,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 234,
+          "loc_deleted_sum": 283
+        },
+        {
+          "model": "gpt-5.6-sol",
+          "feature": "chat_panel_agent_mode",
+          "user_initiated_interaction_count": 7,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "used_agent": true,
+      "used_chat": true,
+      "loc_suggested_to_add_sum": 0,
+      "loc_suggested_to_delete_sum": 0,
+      "loc_added_sum": 234,
+      "loc_deleted_sum": 283,
+      "used_cli": false,
+      "used_copilot_coding_agent": false,
+      "used_copilot_cloud_agent": false,
+      "ai_adoption_phase": {
+        "phase_number": 1,
+        "phase": "Phase 1",
+        "version": "v1"
+      },
+      "ai_credits_used": 171.788924,
+      "used_copilot_app": false,
+      "totals_by_skill": [],
+      "totals_by_custom_agent": [],
+      "totals_by_mcp": [],
+      "totals_by_slash_cmd": [],
+      "distinct_skill_use_count": 0,
+      "distinct_custom_agent_use_count": 0,
+      "distinct_mcp_use_count": 0,
+      "distinct_slash_cmd_use_count": 0,
+      "totals_by_plugin": [],
+      "distinct_plugin_use_count": 0
+    },
+    {
+      "report_start_day": "2026-10-04",
+      "report_end_day": "2026-10-31",
+      "day": "2026-10-12",
+      "enterprise_id": "590626",
+      "user_id": 274194146,
+      "user_login": "gye6666",
+      "user_initiated_interaction_count": 2,
+      "code_generation_activity_count": 1,
+      "code_acceptance_activity_count": 0,
+      "totals_by_ide": [
+        {
+          "ide": "vscode",
+          "user_initiated_interaction_count": 2,
+          "code_generation_activity_count": 1,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 95,
+          "loc_deleted_sum": 111,
+          "last_known_plugin_version": {
+            "sampled_at": "2026-10-12T07:29:04.393Z",
+            "plugin": "copilot-chat",
+            "plugin_version": "0.69.0"
+          },
+          "last_known_ide_version": {
+            "sampled_at": "2026-10-12T07:29:04.393Z",
+            "ide_version": "1.141.0"
+          }
+        }
+      ],
+      "totals_by_feature": [
+        {
+          "feature": "chat_panel_agent_mode",
+          "user_initiated_interaction_count": 2,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        },
+        {
+          "feature": "agent_edit",
+          "user_initiated_interaction_count": 0,
+          "code_generation_activity_count": 1,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 95,
+          "loc_deleted_sum": 111
+        }
+      ],
+      "totals_by_language_feature": [
+        {
+          "language": "markdown",
+          "feature": "agent_edit",
+          "code_generation_activity_count": 1,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 95,
+          "loc_deleted_sum": 111
+        },
+        {
+          "language": "unknown",
+          "feature": "chat_panel_agent_mode",
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "totals_by_language_model": [
+        {
+          "language": "markdown",
+          "model": "gpt-6.1-sol",
+          "code_generation_activity_count": 1,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 95,
+          "loc_deleted_sum": 111
+        },
+        {
+          "language": "unknown",
+          "model": "gpt-6.1-sol",
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ],
+      "totals_by_model_feature": [
+        {
+          "model": "gpt-6.1-sol",
+          "feature": "chat_panel_agent_mode",
+          "user_initiated_interaction_count": 2,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        },
+        {
+          "model": "gpt-6.1-sol",
+          "feature": "agent_edit",
+          "user_initiated_interaction_count": 0,
+          "code_generation_activity_count": 1,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 95,
+          "loc_deleted_sum": 111
+        }
+      ],
+      "used_agent": true,
+      "used_chat": true,
+      "loc_suggested_to_add_sum": 0,
+      "loc_suggested_to_delete_sum": 0,
+      "loc_added_sum": 95,
+      "loc_deleted_sum": 111,
+      "used_cli": false,
+      "used_copilot_coding_agent": false,
+      "used_copilot_cloud_agent": false,
+      "ai_adoption_phase": {
+        "phase_number": 0,
+        "phase": "No Cohort",
+        "version": "v1"
+      },
+      "ai_credits_used": 40.90915999999999,
+      "used_copilot_app": false,
+      "totals_by_skill": [],
+      "totals_by_custom_agent": [],
+      "totals_by_mcp": [],
+      "totals_by_slash_cmd": [],
+      "distinct_skill_use_count": 0,
+      "distinct_custom_agent_use_count": 0,
+      "distinct_mcp_use_count": 0,
+      "distinct_slash_cmd_use_count": 0,
+      "totals_by_plugin": [],
+      "distinct_plugin_use_count": 0
+    }
+  ],
+  "contains_test_utc_date": true
+}
