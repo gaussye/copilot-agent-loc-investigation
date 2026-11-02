@@ -2,7 +2,7 @@
 
 整理日期：2026-10-28；最后更新：2026-11-02。本文使用已保存的测试证据及 API 快照，各次查询时间分别记录。
 
-记录范围：第 1 至 8 节为 **10 月 26 日四组测试**；第 9 节为 **10 月 28 日单独 CL 重测**；第 10 节为 **10 月 30 日单独 DL 测试**。各日的客户端版本和数据分别记录，不合并对账。
+记录范围：第 1 至 8 节为 **10 月 26 日四组测试**；第 9 节为 **10 月 28 日单独 CL 重测**；第 10 节为 **10 月 30 日单独 DL 测试**；第 11 节为 **11 月 2 日单独 CC 测试**。各日的客户端版本和数据分别记录，不合并对账。
 
 **10 月 26 日对照结果：四次本地操作实际新增 320 行、删除 80 行；API 对该用户 UTC 10 月 26 日的统计为新增 160 行、删除 40 行。已观察到汇总数值差异，但无法确认 API 中的行数具体来自哪次操作。**
 
@@ -907,3 +907,73 @@ X-GitHub-Api-Version: 2026-03-10
 | [DL 测试文件](copilot-loc-test/default_local_20261030.py) | 默认 Agent 实际写入的合成文件 |
 | [metrics-enterprise-gye-gye6666-20261102-1100-refresh-raw.json](metrics-enterprise-gye-gye6666-20261102-1100-refresh-raw.json) | 11 月 2 日 11:00 的原始目标用户快照，包含 28 日 CL 和 30 日 DL |
 | [loc-ui-test-20261030-dl-server-comparison-20261102.json](loc-ui-test-20261030-dl-server-comparison-20261102.json) | DL 本地 / API 对账及同次快照中的 CL 刷新结果 |
+
+## 11. 2026-11-02 单独 CC 测试
+
+### 本地结果
+
+**CC（Copilot Harness / 自定义 LoC Probe）已完成一次文件编辑：新增 80 行、删除 20 行，净增 60 行。** 写入前选择 **Allow Once**，完成后未出现 Keep 步骤。界面计数与实际落盘差异一致。
+
+| 项目 | 本轮记录 |
+|---|---|
+| 测试账号 / 后续查询企业 | `gye6666` / `gye` |
+| 测试标识 | `20261102-CC` |
+| 发送时间（北京时间） | **2026-11-02 11:09** |
+| Harness / Agent | **Copilot / 自定义 LoC Probe** |
+| Harness 含义 | Copilot SDK / Agent Host，本机工作区，不是 Cloud |
+| VS Code / Copilot Chat | **1.143.1 / 0.71.0**，按运行界面的资源版本目录核验 |
+| 模型 / Effort / Context | GPT-6 Luna / Medium / 272K |
+| 入口 / 模式 / 权限 | 普通编辑器窗口 Chat / Interactive / Manual permissions |
+| 文件 | `copilot-loc-test\custom_copilot_20261102.py`，独立新文件 |
+| 写入确认 | `Write file?` 明确显示目标文件和 **+80 / -20** |
+| 实际确认操作 | 从下拉菜单选择 **Allow Once**；未选择主按钮的 `Allow in this Session` |
+| Keep / Accept | **未出现，未点击 Keep** |
+| 界面计数 | `Session Changes: 1 File, +80, -20` |
+| 实际落盘差异 | **+80 / -20** |
+| 文件状态 | 25 行变为 85 行，CRLF，语法有效，内容与预期完全一致 |
+| 自动化提交的测试任务次数 | **1 次**，没有重复发送 |
+| 基线采集时间 | `2026-11-02T11:08:23.162521+08:00` |
+| 最终证据采集时间 | `2026-11-02T11:11:20.154006+08:00` |
+| 最终文件 SHA-256 | `4c3675924615acad6d2074fd14baaae5114afa2fb89b8bd914f97c2ddc6c4fdd` |
+| SDK 请求 ID | 未在检查的 Copilot Chat 扩展日志中捕获，记录为 `null`，不表示没有请求 |
+
+本轮只提交 CC 场景，不混入新的 Local / 默认 Agent 受控任务。采用新的 Chat、与前轮相同的 25 行基线和相同目标修改量；没有手工修正 Agent 输出。14 个历史测试文件及 LoC Probe 定义均保持不变。
+
+Accounts 菜单显示 `gye6666`，扩展登录日志时间为 11:06:12.460；SDK 服务端账号归属及编辑遥测送达未独立验证。SDK / CLI runtime 的具体版本本轮没有重新核验，不将 IDE / 扩展版本等同于 SDK 版本。
+
+开始观察时 IDE 状态栏曾显示正在安装更新，后恢复为 Update；自动化没有点击更新、重启或 customization migration。运行界面的资源路径仍对应上述 1.143.1 / 0.71.0，不能把待安装版本作为本轮运行版本。
+
+### 后续 API 对账
+
+当前为 **客户端完成、服务端对账待查询**。今天 11:00 获取的最新报表仅覆盖到 UTC 10 月 31 日，不包含本轮 UTC 11 月 2 日；它只是本轮前的参考快照，不是本轮没有入账的证据。
+
+```http
+GET https://api.github.com/enterprises/gye/copilot/metrics/reports/users-1-day?day=2026-11-02
+X-GitHub-Api-Version: 2026-03-10
+```
+
+后续也可查询 `users-28-day/latest`，先确认报表覆盖 `2026-11-02`，再筛选目标用户 `gye6666` 和该日记录。
+
+| 核对项 | 口径 |
+|---|---|
+| 活动日期 | **UTC 2026-11-02** |
+| 对应北京时间区间 | `[2026-11-02 08:00, 2026-11-03 08:00)` |
+| 受控本地编辑量 | **新增 80 / 删除 20**，已单次允许写入 |
+| 重点指标 | `agent_edit.loc_added_sum` / `loc_deleted_sum`，并检查 IDE、client、model 等实际返回维度 |
+| 自定义模式 / 名称 | 查看 `chat_panel_custom_mode`、`totals_by_custom_agent` 实际返回情况；不能将名称或启动次数当作编辑 LoC |
+| 两个完整 UTC 日窗口结束 | **2026-11-05 08:00 北京时间** |
+| 三个完整 UTC 日的保守复查节点 | **2026-11-06 08:00 北京时间** |
+
+没有 Keep 步骤不意味着 API 必然不统计编辑行数。反过来，文件落盘和界面 +80 / -20 也不能证明遥测已送达或进入报表。现有采集日志未捕获 acceptance 事件，不能据此认定没有上传。
+
+本轮与 CL / DL 分属不同 UTC 日期。即使版本、模型及修改量相同，也不能排除日期间环境变化或同日其他活动；日汇总没有逐请求编辑归因。以上日期不保证报表届时更新或数据回填，没有创建自动查询或提醒。
+
+### 本轮证据
+
+| 文件 | 用途 |
+|---|---|
+| [loc-ui-test-20261102-cc.json](loc-ui-test-20261102-cc.json) | 账号、环境、CC 场景、单次写入确认、界面 / 落盘计数及对账口径 |
+| [loc-ui-test-20261102-baseline-observed.json](loc-ui-test-20261102-baseline-observed.json) | 修改前 25 行 CRLF 基线 |
+| [loc-ui-test-20261102-observed.json](loc-ui-test-20261102-observed.json) | 完成后的实际内容、差异、行数、换行和哈希 |
+| [CC 测试文件](copilot-loc-test/custom_copilot_20261102.py) | Copilot Harness / 自定义 Agent 实际写入的合成文件 |
+| [测试前参考 API 快照](metrics-enterprise-gye-gye6666-20261102-1100-refresh-raw.json) | 已保存的同日 11:00 报表，截至 UTC 10 月 31 日，未覆盖本轮测试日 |
