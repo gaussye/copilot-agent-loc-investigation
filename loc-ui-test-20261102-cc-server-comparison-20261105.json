@@ -1,0 +1,93 @@
+{
+  "queried_at_utc": "2026-11-05T00:57:21.299438+00:00",
+  "enterprise": "gye",
+  "actor": "gye6666",
+  "test_day_utc": "2026-11-02",
+  "http_status": 200,
+  "status": "daily_edit_totals_match_controlled_edit_attribution_unresolved",
+  "raw_api_snapshot": "metrics-enterprise-gye-gye6666-20261105-reauthorized-refresh-raw.json",
+  "single_day_api_snapshot": "metrics-enterprise-gye-gye6666-20261102-one-day-20261105-raw.json",
+  "single_day_queried_at_utc": "2026-11-05T00:57:54.193584+00:00",
+  "single_day_matches_latest_user_activity_fields": true,
+  "client_manifest": "loc-ui-test-20261102-cc.json",
+  "report_start_day": "2026-10-07",
+  "report_end_day": "2026-11-03",
+  "test_day_covered": true,
+  "test_day_user_record_count": 1,
+  "authentication": {
+    "reader": "gaussye",
+    "source": "existing_local_gh_login_reauthorized",
+    "read_enterprise_scope_verified": true,
+    "earlier_attempts_returned_403": true,
+    "new_authorization_returned_200": true,
+    "historical_credential_scopes_unknown": true
+  },
+  "client": {
+    "successful_controlled_file_edits": 1,
+    "prompt_submission_count": 1,
+    "harness": "Copilot",
+    "agent": "LoC Probe",
+    "vscode": "1.143.1",
+    "copilot_chat": "0.71.0",
+    "loc_added_sum": 80,
+    "loc_deleted_sum": 20,
+    "net": 60,
+    "write_confirmation_action": "Allow Once",
+    "keep_observed": false,
+    "keep_clicked": false,
+    "request_id": null
+  },
+  "server": {
+    "user_initiated_interaction_count": 2,
+    "code_generation_activity_count": 1,
+    "code_acceptance_activity_count": 1,
+    "loc_suggested_to_add_sum": 80,
+    "loc_suggested_to_delete_sum": 20,
+    "loc_added_sum": 80,
+    "loc_deleted_sum": 20,
+    "net": 60,
+    "features": ["chat_panel_agent_mode"],
+    "agent_edit_present": false,
+    "chat_panel_custom_mode_present": false,
+    "totals_by_custom_agent": [],
+    "distinct_custom_agent_use_count": 0,
+    "language_with_nonzero_loc": "python",
+    "model_with_nonzero_loc": "gpt-6-luna",
+    "ide_version": "1.143.1",
+    "plugin": "vscode-agent-host",
+    "plugin_version": "1.143.1",
+    "version_sampled_at_utc": "2026-11-02T03:10:49.892Z",
+    "vscode_client_request_count": 4,
+    "vscode_client_session_count": 2,
+    "used_agent": true,
+    "used_chat": true,
+    "used_local_byok": false
+  },
+  "difference_client_minus_server": {
+    "loc_added_sum": 0,
+    "loc_deleted_sum": 0,
+    "net": 0
+  },
+  "historical_days_in_same_latest_snapshot": [
+    {"day": "2026-10-26", "controlled_cases": "CL, CC, DC, DL", "client_added": 320, "client_deleted": 80, "server_added": 160, "server_deleted": 40},
+    {"day": "2026-10-28", "controlled_case": "CL", "client_added": 80, "client_deleted": 20, "server_added": 0, "server_deleted": 0},
+    {"day": "2026-10-30", "controlled_case": "DL", "client_added": 80, "client_deleted": 20, "server_added": 0, "server_deleted": 0}
+  ],
+  "interpretation": [
+    "Both the latest and single-day reports contain the November 2 user record with actual edit LoC +80/-20, numerically matching the controlled CC output.",
+    "The report classifies all November 2 activity as chat_panel_agent_mode, with no agent_edit or chat_panel_custom_mode row, and no named custom-agent activity.",
+    "The current official LoC reference describes direct agent file edits under agent_edit, and chat-panel LoC as code-block copy/apply activity. This result differs from that documented classification; the reason is not established.",
+    "The locally selected custom agent was LoC Probe, but daily totals alone do not prove this individual request was ingested or correctly attributed to that custom agent.",
+    "The report has two user interactions and two client sessions, while automation submitted one controlled task. The source of the additional activity is not established.",
+    "The API plugin identifier vscode-agent-host is a different reporting component from the locally installed copilot-chat extension; the versions must not be conflated.",
+    "No Keep step was observed, yet the report contains one acceptance activity. This does not establish that Allow Once and acceptance activities have a one-to-one mapping.",
+    "The old Local custom and Local default days still have actual edit LoC 0/0. The evidence does not support a blanket claim that custom-agent edits are unsupported.",
+    "Harness-specific telemetry or classification differences are a useful investigation direction, not a confirmed root cause. The tests occurred on different dates, and same-day other activity was not excluded.",
+    "Report coverage and matching values do not guarantee that the report is finalized or will never be revised."
+  ],
+  "official_references": [
+    "https://docs.github.com/en/copilot/reference/copilot-usage-metrics/lines-of-code-metrics",
+    "https://docs.github.com/en/copilot/reference/copilot-usage-metrics/copilot-usage-metrics",
+    "https://docs.github.com/en/rest/copilot/copilot-usage-metrics#get-copilot-users-usage-metrics"
+  ]
+}
