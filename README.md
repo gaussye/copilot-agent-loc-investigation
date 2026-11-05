@@ -2,7 +2,7 @@
 
 整理日期：2026-10-28；最后更新：2026-11-05。本文使用已保存的测试证据及 API 快照，各次查询时间分别记录。
 
-记录范围：第 1 至 8 节为 **10 月 26 日四组测试**；第 9 节为 **10 月 28 日单独 CL 重测**；第 10 节为 **10 月 30 日单独 DL 测试**；第 11 节为 **11 月 2 日单独 CC 测试**。各日的客户端版本和数据分别记录，不合并对账。
+记录范围：第 1 至 8 节为 **10 月 26 日四组测试**；第 9 节为 **10 月 28 日单独 CL 重测**；第 10 节为 **10 月 30 日单独 DL 测试**；第 11 节为 **11 月 2 日单独 CC 测试**；第 12 节为 **11 月 5 日单独 DC 测试**。各日的客户端版本和数据分别记录，不合并对账。
 
 **10 月 26 日对照结果：四次本地操作实际新增 320 行、删除 80 行；API 对该用户 UTC 10 月 26 日的统计为新增 160 行、删除 40 行。已观察到汇总数值差异，但无法确认 API 中的行数具体来自哪次操作。**
 
@@ -1219,3 +1219,90 @@ API 将本轮全部 LoC 放在 `chat_panel_agent_mode`，同时没有 `agent_edi
 | [metrics-enterprise-gye-gye6666-20261105-reauthorized-refresh-raw.json](metrics-enterprise-gye-gye6666-20261105-reauthorized-refresh-raw.json) | 11 月 5 日最新 28 天报表的原始目标用户快照，包含本轮 CC 和历史测试日 |
 | [metrics-enterprise-gye-gye6666-20261102-one-day-20261105-raw.json](metrics-enterprise-gye-gye6666-20261102-one-day-20261105-raw.json) | 指定 UTC 11 月 2 日的单日报表原始目标用户记录 |
 | [loc-ui-test-20261102-cc-server-comparison-20261105.json](loc-ui-test-20261102-cc-server-comparison-20261105.json) | CC 本地 / API 对账、归类差异及同次快照中的历史结果 |
+
+## 12. 2026-11-05 单独 DC 测试
+
+### 本地结果
+
+**DC（Copilot Harness / 默认 Agent）已完成一次文件编辑：新增 80 行、删除 20 行，净增 60 行。** 写入前选择 **Allow Once**，完成后出现 **Keep All Edits**，已点击保留，随后 Keep / Undo 控件消失。界面计数与实际落盘差异一致；服务端对账待报表覆盖本轮活动日。
+
+| 项目 | 本轮记录 |
+|---|---|
+| 测试账号 / 后续查询企业 | `gye6666` / `gye` |
+| 测试标识 | `20261105-DC` |
+| 发送时间（北京时间） | **2026-11-05 09:26** |
+| Harness / Agent | **Copilot / 内置默认 Agent**，不是 LoC Probe |
+| Harness 含义 | Copilot SDK / Agent Host，本机工作区，不是 Cloud |
+| VS Code / Copilot 扩展 | **1.144.0 / 0.72.0** |
+| 版本核验 | 运行界面资源目录的应用元数据；内置扩展 `copilot` 的包标识为 `GitHub.copilot-chat`，版本 `0.72.0` |
+| 模型 / Effort / Context | GPT-6 Luna / Medium / 272K |
+| 入口 / 模式 / 权限 | 普通编辑器窗口 Chat / Interactive / Manual permissions |
+| 文件 | `copilot-loc-test\default_copilot_20261105.py`，独立新文件 |
+| 写入确认 | `Write file?` 明确显示目标文件和 **+80 / -20** |
+| 实际确认操作 | 从下拉菜单选择 **Allow Once**；未选择主按钮的 `Allow in this Session` |
+| Keep / Accept | **出现并点击 Keep All Edits**，Keep / Undo 控件随后消失 |
+| 界面计数 | `1 file changed, 80 lines added, 20 lines removed` |
+| 实际落盘差异 | **+80 / -20** |
+| 文件状态 | 25 行变为 85 行，CRLF，语法有效，内容与预期完全一致 |
+| 自动化提交的测试任务次数 | **1 次**，没有重复发送或混入其他受控场景 |
+| 基线采集时间 | `2026-11-05T09:25:02.694896+08:00` |
+| Keep 后最终证据采集时间 | `2026-11-05T09:27:51.368909+08:00` |
+| 基线 SHA-256 | `6298c00f97ffc8ecc7c34ba09dc14c021d83cf0ab507d3debd1be2d1d41e6bfe` |
+| 最终文件 SHA-256 | `4c3675924615acad6d2074fd14baaae5114afa2fb89b8bd914f97c2ddc6c4fdd` |
+| SDK 请求 ID | 未在检查的 Copilot Chat 扩展日志中捕获，记录为 `null`，不表示没有请求 |
+
+测试前已通过 Accounts 菜单确认账号为 `gye6666`，扩展登录日志时间为 `2026-11-05 09:15:19.330`；这不等于已逐请求验证 SDK 服务端身份或遥测送达。新 Chat 初始化时异步恢复过 LoC Probe，发送前已显式切换并复核为内置默认 **Agent**；没有向自定义 Agent 发送本轮任务。
+
+本轮只运行 DC，沿用相同的 25 行基线，要求内置文件编辑工具将 20 条旧字典项替换为 80 条新项，禁止终端、脚本、MCP、子 Agent、skills 和 handoffs。没有手工修正 Agent 输出，15 个历史测试文件及 LoC Probe 定义均保持不变；自动化没有点击更新、重启或 customization migration。
+
+### 与前轮 CC 的可比性
+
+| 项目 | 11 月 2 日 CC | 11 月 5 日 DC |
+|---|---|---|
+| Harness / Agent | Copilot / 自定义 LoC Probe | Copilot / 默认 Agent |
+| VS Code / Copilot 扩展 | **1.143.1 / 0.71.0** | **1.144.0 / 0.72.0** |
+| 模型 / Effort / Context | GPT-6 Luna / Medium / 272K | GPT-6 Luna / Medium / 272K |
+| 本地新增 / 删除 | 80 / 20 | 80 / 20 |
+| 写入前确认 | Allow Once | Allow Once |
+| 完成后 Keep | 未出现 | **出现，已点击 Keep All Edits** |
+| API 状态 | 11 月 5 日查询的日汇总为 80 / 20，归类仍有疑点 | **待覆盖 UTC 11 月 5 日** |
+
+**本轮运行时 IDE / 扩展已比 CC 更新，不能作为完全同版本的默认 / 自定义 Agent A/B 对照。** Keep 步骤差异是真实观察，但日期、版本和 Agent 类型均不同，不能单独归因于默认 / 自定义 Agent。SDK / CLI runtime 的具体版本没有重新核验，不将 IDE / 扩展版本等同于 SDK 版本。
+
+### 后续 API 对账
+
+当前为 **客户端完成、服务端对账待查询**。今天 08:57 已取得的最新报表仅覆盖到 UTC 11 月 3 日，不包含本轮 UTC 11 月 5 日；它只是测试前参考快照，不能作为本轮编辑没有入账的证据。本节没有本轮活动日的 API 原始用户记录，不以 11 月 2 日 CC 的记录替代。
+
+```http
+GET https://api.github.com/enterprises/gye/copilot/metrics/reports/users-1-day?day=2026-11-05
+Accept: application/vnd.github+json
+X-GitHub-Api-Version: 2026-03-10
+```
+
+后续也可查询 `users-28-day/latest`，先确认报表覆盖 `2026-11-05`，再筛选目标用户 `gye6666` 和该日记录。上面的单日接口是后续查询目标，本次尚未调用。
+
+| 核对项 | 口径 |
+|---|---|
+| API 读取账号 / 企业 / 目标用户 | `gaussye` / `gye` / `gye6666`；读取账号与测试账号不同 |
+| 活动日期 | **UTC 2026-11-05** |
+| 对应北京时间区间 | `[2026-11-05 08:00, 2026-11-06 08:00)` |
+| 受控本地编辑量 | **新增 80 / 删除 20**，已单次允许写入并 Keep |
+| 实际 LoC 口径 | 检查用户日总计及 IDE、feature、语言、model 等实际返回分组，不重复相加 |
+| Feature 归类 | 同时检查 `agent_edit` 和 `chat_panel_agent_mode`；前轮 CC 缺少 `agent_edit` 但总 LoC 非零，不能仅按分类是否出现判断缺失 |
+| API 组件版本 | 原样保存实际返回的插件名称和版本；不能预先假定等于本地 `GitHub.copilot-chat 0.72.0` |
+| 两个完整 UTC 日窗口结束 | **2026-11-08 08:00 北京时间** |
+| 三个完整 UTC 日的保守复查节点 | **2026-11-09 08:00 北京时间** |
+
+Allow Once、Keep 和文件落盘证明本地编辑及保留过程，不证明编辑遥测已送达或进入报表。本轮采集日志未捕获 acceptance 事件，不能据此认定没有上传。未来日期不保证报表届时更新或数据回填，没有创建自动查询或提醒。
+
+同日其他活动未完全排除，用户日汇总不提供逐请求编辑归因。后续结果应与本地修改量、版本和实际功能分类一起解释，不提前认定默认 / 自定义 Agent 或 Harness 的根因。
+
+### 本轮证据
+
+| 文件 | 用途 |
+|---|---|
+| [loc-ui-test-20261105-dc.json](loc-ui-test-20261105-dc.json) | 账号、运行版本、默认 Agent、单次写入确认、Keep 及后续对账口径 |
+| [loc-ui-test-20261105-baseline-observed.json](loc-ui-test-20261105-baseline-observed.json) | 修改前 25 行 CRLF 基线 |
+| [loc-ui-test-20261105-observed.json](loc-ui-test-20261105-observed.json) | Keep 后的实际内容、差异、行数、换行和哈希 |
+| [DC 测试文件](copilot-loc-test/default_copilot_20261105.py) | Copilot Harness / 默认 Agent 实际写入的合成文件 |
+| [测试前参考 API 快照](metrics-enterprise-gye-gye6666-20261105-reauthorized-refresh-raw.json) | 11 月 5 日 08:57 的报表，截至 UTC 11 月 3 日，未覆盖本轮测试日 |
