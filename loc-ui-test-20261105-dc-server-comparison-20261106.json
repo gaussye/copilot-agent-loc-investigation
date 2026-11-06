@@ -1,0 +1,45 @@
+{
+  "enterprise": "gye",
+  "actor": "gye6666",
+  "test_day_utc": "2026-11-05",
+  "status": "pending_report_coverage_no_downloadable_single_day_report",
+  "client_manifest": "loc-ui-test-20261105-dc.json",
+  "client": {
+    "harness": "Copilot",
+    "agent": "Agent",
+    "loc_added_sum": 80,
+    "loc_deleted_sum": 20,
+    "keep_clicked": true
+  },
+  "latest_report": {
+    "queried_at_utc": "2026-11-06T00:11:14.943418+00:00",
+    "raw_api_snapshot": "metrics-enterprise-gye-gye6666-20261106-0811-refresh-raw.json",
+    "http_status": 200,
+    "report_start_day": "2026-10-08",
+    "report_end_day": "2026-11-04",
+    "test_day_covered": false,
+    "test_day_user_record_count": 0
+  },
+  "single_day_report": {
+    "queried_at_utc": "2026-11-06T00:11:39.531561+00:00",
+    "raw_api_snapshot": "metrics-enterprise-gye-gye6666-20261105-one-day-20261106-raw.json",
+    "endpoint": "enterprises/gye/copilot/metrics/reports/users-1-day?day=2026-11-05",
+    "http_status": 200,
+    "status": "no_downloadable_report_in_response",
+    "response_json_type": "str",
+    "response_json_value": "",
+    "download_links_returned": false,
+    "user_metrics_downloaded": false
+  },
+  "server_loc_added_sum": null,
+  "server_loc_deleted_sum": null,
+  "difference_client_minus_server": null,
+  "interpretation": [
+    "The latest report ends November 4 and does not cover the November 5 DC test. Absence of a November 5 record cannot be interpreted as zero LoC.",
+    "The single-day endpoint returns HTTP 200 with an empty JSON string rather than the documented report object with download links. No target-user metrics can be read from that response.",
+    "Authentication now succeeds, but neither response provides a report record for the target activity day.",
+    "The activity day ended November 6 at 08:00 Beijing time, approximately eleven minutes before these queries. The previously recorded two-day and three-day checkpoints remain November 8 and November 9 at 08:00 Beijing time.",
+    "The evidence does not establish whether the edit telemetry has been ingested, whether metrics are zero, or why the single-day endpoint returned an empty JSON string.",
+    "No new controlled test was submitted, and no automatic query or reminder was created."
+  ]
+}

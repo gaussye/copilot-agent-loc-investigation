@@ -1,0 +1,75 @@
+{
+  "enterprise": "gye",
+  "actor": "gye6666",
+  "test_day_utc": "2026-11-05",
+  "status": "report_available_daily_totals_exceed_controlled_edit_attribution_unresolved",
+  "client_manifest": "loc-ui-test-20261105-dc.json",
+  "latest_report": {
+    "queried_at_utc": "2026-11-06T06:04:35.772464+00:00",
+    "raw_api_snapshot": "metrics-enterprise-gye-gye6666-20261106-1404-refresh-raw.json",
+    "http_status": 200,
+    "report_start_day": "2026-10-09",
+    "report_end_day": "2026-11-05",
+    "test_day_covered": true,
+    "test_day_user_record_count": 1
+  },
+  "single_day_report": {
+    "queried_at_utc": "2026-11-06T06:04:35.675161+00:00",
+    "raw_api_snapshot": "metrics-enterprise-gye-gye6666-20261105-one-day-20261106-1404-raw.json",
+    "http_status": 200,
+    "report_day": "2026-11-05",
+    "test_day_user_record_count": 1,
+    "all_user_activity_fields_match_latest": true
+  },
+  "client": {
+    "harness": "Copilot",
+    "agent": "Agent",
+    "loc_added_sum": 80,
+    "loc_deleted_sum": 20,
+    "prompt_submission_count": 1,
+    "write_confirmation_action": "Allow Once",
+    "keep_clicked": true,
+    "vscode": "1.144.0",
+    "copilot_chat": "0.72.0"
+  },
+  "server": {
+    "loc_added_sum": 160,
+    "loc_deleted_sum": 40,
+    "loc_suggested_to_add_sum": 80,
+    "loc_suggested_to_delete_sum": 20,
+    "user_initiated_interaction_count": 2,
+    "code_generation_activity_count": 2,
+    "code_acceptance_activity_count": 1,
+    "chat_panel_agent_mode_added": 80,
+    "chat_panel_agent_mode_deleted": 20,
+    "agent_edit_added": 80,
+    "agent_edit_deleted": 20,
+    "vscode_client_request_count": 4,
+    "vscode_client_session_count": 2,
+    "ide_version": "1.144.0",
+    "plugin": "unknown",
+    "plugin_version": "unknown",
+    "version_sampled_at_utc": "2026-11-05T01:32:12.582Z",
+    "client_telemetry_present": true,
+    "usage_metrics_requirements": {
+      "met": ["vscode"],
+      "unmet": [],
+      "unknown": []
+    }
+  },
+  "difference_server_minus_controlled_local": {
+    "loc_added_sum": 80,
+    "loc_deleted_sum": 20
+  },
+  "interpretation": [
+    "The November 5 report is now available from both endpoints, unlike the earlier November 6 08:11 and 10:10 snapshots.",
+    "The daily total is exactly twice the one controlled local edit. The two distinct feature rows each contain +80/-20 and sum to the daily +160/-40 total.",
+    "This is not double-counting caused by adding different dimensional breakdown arrays in the analysis: the original user-day fields themselves report +160/-40.",
+    "The matching feature values raise a possible overlapping-reporting or duplicate-attribution question, but do not prove the same edit was counted twice.",
+    "Other same-day activity has not been excluded. The report has two user interactions and two client sessions, while automation submitted one controlled task. No request-level edit identifiers establish which event populated either feature row.",
+    "The November 2 CC day still has +80/-20 solely under chat_panel_agent_mode, with no agent_edit. Versions and dates differ, so this is not proof of a default/custom-agent cause or a Keep-to-agent_edit mapping.",
+    "The same latest snapshot still has October 28 CL and October 30 DL actual edit LoC 0/0, and October 26 actual edit LoC 160/40.",
+    "client_telemetry_present and the met vscode requirement are daily report indicators, not proof of receipt of an individual controlled edit.",
+    "The two-full-UTC-day and three-full-UTC-day checkpoints are still November 8 and November 9 at 08:00 Beijing time. Early report availability does not guarantee finalization."
+  ]
+}

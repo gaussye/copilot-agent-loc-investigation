@@ -2,13 +2,15 @@
 
 [Chinese version](README.md)
 
-Originally compiled: **2026-10-28**. Evidence last updated: **2026-11-05**. English version prepared: **2026-11-06**. This document uses the saved test evidence and API snapshots; individual query times are recorded below. No additional test or metrics query was performed when preparing this English version.
+Originally compiled: **2026-10-28**. Evidence last updated: **2026-11-06**. English version prepared: **2026-11-06**. This document uses the saved test evidence and API snapshots; individual query times are recorded below. The DC reconciliation now includes the November 6 14:04 Beijing-time API snapshots.
 
 Sections 1-8 cover the **October 26 four-case test**; section 9 covers the **October 28 isolated CL retest**; section 10 covers the **October 30 isolated DL test**; section 11 covers the **November 2 isolated CC test**; section 12 covers the **November 5 isolated DC test**. Client versions and results are kept separate by test date.
 
 **October 26: four local operations added 320 lines and deleted 80 lines. The API reported 160 added and 40 deleted for the user on that UTC day. The aggregate discrepancy is confirmed, but the API does not identify which operations contributed those lines.**
 
 **Latest reconciliation, queried November 5: the November 2 CC user-day totals are +80/-20, matching the controlled local edit numerically. However, all activity is classified as `chat_panel_agent_mode`, with no custom-agent attribution. In the same latest snapshot, October 28 CL and October 30 DL still report actual LoC of 0/0. See section 11.**
+
+**November 6 14:04 update: the November 5 DC report is available. Actual user-day LoC is +160/-40, with +80/-20 in each of `chat_panel_agent_mode` and `agent_edit`. The single controlled local edit was +80/-20, so the daily total exceeds it by +80/-20. Overlapping reporting or duplicate attribution is a possibility, not a confirmed finding; other same-day activity has not been excluded. See section 12.**
 
 All dates are in **2026**. Local submission and observation times are **Beijing time (UTC+8)** unless explicitly marked UTC. ISO timestamps retain their original offsets.
 
@@ -1226,9 +1228,11 @@ Source: [November 5 latest raw API snapshot](metrics-enterprise-gye-gye6666-2026
 
 ## 12. November 5 isolated DC test
 
+**November 6 14:04 reconciliation: both latest and single-day endpoints returned HTTP 200 and a user-day record for UTC November 5. All daily activity fields and values match. The API reports 160 added and 40 deleted lines, twice the controlled local +80/-20. Two distinct feature rows each contain +80/-20. The numerical discrepancy is confirmed; duplicate counting of the same edit is not.**
+
 ### Local result
 
-**DC (Copilot harness / default Agent) completed one edit: 80 added lines, 20 deleted lines, net +60.** Allow Once was selected before writing. Keep All Edits appeared after completion and was clicked; Keep / Undo controls then disappeared. UI and on-disk counts matched. Server reconciliation remains pending report coverage of this activity day.
+**DC (Copilot harness / default Agent) completed one edit: 80 added lines, 20 deleted lines, net +60.** Allow Once was selected before writing. Keep All Edits appeared after completion and was clicked; Keep / Undo controls then disappeared. UI and on-disk counts matched. The November 6 API reconciliation is recorded below.
 
 | Item | Test record |
 |---|---|
@@ -1269,13 +1273,19 @@ Only DC was run, using the same 25-line baseline and built-in file-edit tools to
 | Local added / deleted | 80 / 20 | 80 / 20 |
 | Pre-write authorization | Allow Once | Allow Once |
 | Post-completion Keep | Not observed | **Observed; Keep All Edits clicked** |
-| API status | November 5 query reports 80/20; attribution remains unresolved | **Pending coverage of UTC November 5** |
+| API status | Still 80/20 in the same November 6 14:04 snapshot, solely under `chat_panel_agent_mode` | **Daily total 160/40**; 80/20 under each of `chat_panel_agent_mode` and `agent_edit` |
 
 **DC ran with newer IDE/extension versions and is not a same-version default/custom-agent A/B comparison.** The Keep difference is an actual observation, but date, versions, and agent type all differ; it cannot be attributed solely to default versus custom agent selection. SDK/CLI runtime versions were not reverified and must not be inferred from IDE/extension versions.
 
-### Pending API reconciliation
+### API queries and reporting scope
 
-Status: **client completed; server reconciliation pending**. The latest available saved report, queried November 5 at 08:57, ends UTC November 3. It does not cover UTC November 5 and is only a pre-test reference, not evidence that this edit was uncounted. There is no raw API record for this DC activity day in this section; the November 2 CC record is not a substitute.
+The November 5 08:57 pre-test report ended UTC November 3. Neither of the two morning checks on November 6 provided a downloadable report for the activity day. **At 14:04, both endpoints provided the target user's record:**
+
+```http
+GET https://api.github.com/enterprises/gye/copilot/metrics/reports/users-28-day/latest
+Accept: application/vnd.github+json
+X-GitHub-Api-Version: 2026-03-10
+```
 
 ```http
 GET https://api.github.com/enterprises/gye/copilot/metrics/reports/users-1-day?day=2026-11-05
@@ -1283,7 +1293,26 @@ Accept: application/vnd.github+json
 X-GitHub-Api-Version: 2026-03-10
 ```
 
-This is the **planned follow-up endpoint**, not a completed query. Alternatively, use `users-28-day/latest`, verify coverage of `2026-11-05`, and select the target user and date.
+| Query time, Beijing time | Latest 28-day report | Single-day endpoint for UTC November 5 |
+|---|---|---|
+| 2026-11-06 08:11 | HTTP 200; ends UTC November 4, not covering this test | HTTP 200; JSON value `""`, no download links |
+| 2026-11-06 10:10 | HTTP 200; still ends UTC November 4 | HTTP 200; still `""`, no download links |
+| **2026-11-06 14:04** | **HTTP 200; October 9 through November 5, covering this test** | **HTTP 200; November 5 report download links, one target-user record retrieved** |
+
+The morning empty string is not a zero-line user record and must not be interpreted as LoC 0/0. The 14:04 result establishes report availability, not the cause of the earlier empty responses.
+
+| Query item | Result |
+|---|---|
+| Enterprise / Target user | `gye` / `gye6666` |
+| API reader | `gaussye`, reauthorized local GitHub CLI credential; different from the test account |
+| Latest-report query, UTC | `2026-11-06T06:04:35.772464+00:00` |
+| Single-day query, UTC | `2026-11-06T06:04:35.675161+00:00` |
+| HTTP | **200 for both endpoints** |
+| Latest reporting period | **2026-10-09 through 2026-11-05** |
+| Target-user records for the test day | **1 user-day record in each report** |
+| Consistency | All daily activity fields and values match; reporting-period/date fields differ by report shape |
+
+Filter the latest report to `user_login == "gye6666"` and `day == "2026-11-05"`. Both endpoints provide user-day aggregates, not individual file-edit request records.
 
 | Reconciliation item | Scope |
 |---|---|
@@ -1293,13 +1322,275 @@ This is the **planned follow-up endpoint**, not a completed query. Alternatively
 | Controlled local edit | **80 added / 20 deleted**, single write authorized and kept |
 | Actual LoC | Check user totals and returned IDE, feature, language, and model breakdowns without double-counting |
 | Feature classification | Check both `agent_edit` and `chat_panel_agent_mode`; the previous CC report lacked `agent_edit` but had nonzero total LoC |
-| API component version | Preserve the actual returned plugin name and version; do not assume they equal local `GitHub.copilot-chat 0.72.0` |
+| API component version | Both plugin name and version are `unknown`; do not replace them with local `GitHub.copilot-chat 0.72.0` |
 | Two-full-UTC-day window ends | **2026-11-08 08:00 Beijing time** |
 | Conservative three-full-UTC-day checkpoint | **2026-11-09 08:00 Beijing time** |
 
-Allow Once, Keep, and the on-disk file establish local editing and retention, not telemetry receipt or aggregation. The collector captured no acceptance event, which does not prove no upload occurred. Future checkpoints do not guarantee report refresh or backfill; no automated query or reminder was created.
+At November 6 14:04, the report is available before the two-full-UTC-day window ends. Coverage does not establish finalization; later revisions remain possible. These dates do not guarantee refresh or backfill, and no automated query or reminder was created.
 
-Other same-day activity has not been fully excluded, and user-day reports do not provide per-request edit attribution. Interpret the eventual result alongside local changes, versions, and actual feature classification without prematurely assigning a default/custom-agent or harness root cause.
+### API results queried November 6 at 14:04
+
+| Metric | API result for UTC 2026-11-05 |
+|---|---|
+| Default-agent mode: `chat_panel_agent_mode` | **2 interactions; 80 added / 20 deleted** |
+| Custom-agent mode: `chat_panel_custom_mode` | Not present |
+| `agent_edit` | **Present; 80 added / 20 deleted** |
+| User-day `loc_added_sum` / `loc_deleted_sum` | **160 / 40**, net +120 |
+| Controlled local edit | **80 / 20**, net +60 |
+| API total minus controlled local edit | **80 more added / 20 more deleted**, net +60 more |
+| Suggested added / deleted | **80 / 20** |
+| Generation / Acceptance activities | **2 / 1** |
+| IDE | **VS Code 1.144.0** |
+| API plugin name / Version | **`unknown` / `unknown`**; locally installed extension is `GitHub.copilot-chat 0.72.0` |
+| Model | `gpt-6-luna` |
+| Language attribution of nonzero LoC | `python`: chat-mode 80/20; `unknown`: `agent_edit` 80/20 |
+| `used_agent` / `used_chat` | `true` / `true` |
+| `totals_by_custom_agent` / `distinct_custom_agent_use_count` | `[]` / `0`; the controlled test used the default Agent |
+| `vscode` in `totals_by_client` | `request_count = 4`, `session_count = 2` |
+| `client_telemetry_present` | **`true`** |
+| `usage_metrics_requirements` | `met: ["vscode"]`, `unmet: []`, `unknown: []` |
+
+The version sample is `2026-11-05T01:32:12.582Z`, or 09:32:12.582 Beijing time. The version sample and daily telemetry-requirements flags do not provide this individual controlled edit's receipt time or proof of per-request delivery.
+
+| `feature` | Interactions | Generation activities | Acceptance activities | Suggested added / deleted | Actual added / deleted |
+|---|---:|---:|---:|---:|---:|
+| `chat_panel_agent_mode` | 2 | 1 | 1 | 80 / 20 | **80 / 20** |
+| `agent_edit` | 0 | 1 | 0 | 0 / 0 | **80 / 20** |
+| **User-day total** | **2** | **2** | **1** | **80 / 20** | **160 / 40** |
+
+**The original top-level user-day fields themselves report 160/40; the two feature rows also sum to that total.** This is not an analysis error caused by adding IDE, language, and model breakdowns together. Those separate dimensional views must still not be added again.
+
+### Same-snapshot comparison and interpretation
+
+All API values below come from the **same latest report queried November 6 at 14:04**:
+
+| UTC activity date | Controlled case(s) | Local added / deleted | API actual added / deleted | Feature classification |
+|---|---|---:|---:|---|
+| 2026-10-26 | CL, CC, DC, DL | 320 / 80 | **160 / 40** | Actual LoC in `agent_edit`; contributing cases unknown |
+| 2026-10-28 | CL: Local / custom LoC Probe | 80 / 20 | **0 / 0** | Custom-mode interactions present; no `agent_edit` |
+| 2026-10-30 | DL: Local / default Agent | 80 / 20 | **0 / 0** | Default-mode interactions present; no `agent_edit` |
+| 2026-11-02 | CC: Copilot / custom LoC Probe | 80 / 20 | **80 / 20** | Only `chat_panel_agent_mode`; no `agent_edit` |
+| 2026-11-05 | DC: Copilot / default Agent | 80 / 20 | **160 / 40** | 80/20 in each of `chat_panel_agent_mode` and `agent_edit` |
+
+**Confirmed: the DC activity day now has nonzero LoC, and its daily total is twice the controlled local edit. Unconfirmed: whether the same edit was reported or attributed twice across the two features.** Identical feature values are a useful lead for investigating overlap, not a confirmed root cause.
+
+Automation submitted one controlled task, whereas the report contains two interactions and two client sessions. The source of additional activity is unknown; other same-day activity has not been excluded. No request-level edit identifiers establish that both feature rows came from this controlled edit. Additional daily activity must not be described as duplicate automated submission.
+
+CC and DC also differ in date, IDE/extension versions, and Keep behavior. The result does not establish that default agents always double-count, custom agents omit one contribution, or Keep necessarily produces `agent_edit`. It still does not support a blanket claim that custom-agent LoC is unsupported. Reporting coverage, feature classification, and possible overlapping attribution require separate investigation.
+
+Allow Once, Keep, and the file on disk establish local editing and retention. Uncaptured local acceptance logs do not prove no upload occurred. API `client_telemetry_present: true` and satisfied requirements are daily indicators, not an event-by-event mapping for this controlled request.
+
+### Complete raw API user-day record
+
+The following is the **complete UTC November 5 user-day record for `gye6666` from the latest report queried November 6 at 14:04**. All original fields and values are preserved, including `client_telemetry_present` and `usage_metrics_requirements`.
+
+This is a downloaded NDJSON user record, not the REST download-link response or collector-added query metadata. Sources: [latest raw report](metrics-enterprise-gye-gye6666-20261106-1404-refresh-raw.json) and [specified single-day report](metrics-enterprise-gye-gye6666-20261105-one-day-20261106-1404-raw.json), whose daily activity fields and values match.
+
+```json
+{
+  "report_start_day": "2026-10-09",
+  "report_end_day": "2026-11-05",
+  "day": "2026-11-05",
+  "enterprise_id": "590626",
+  "user_id": 274194146,
+  "user_login": "gye6666",
+  "user_initiated_interaction_count": 2,
+  "code_generation_activity_count": 2,
+  "code_acceptance_activity_count": 1,
+  "totals_by_ide": [
+    {
+      "ide": "vscode",
+      "user_initiated_interaction_count": 2,
+      "code_generation_activity_count": 2,
+      "code_acceptance_activity_count": 1,
+      "loc_suggested_to_add_sum": 80,
+      "loc_suggested_to_delete_sum": 20,
+      "loc_added_sum": 160,
+      "loc_deleted_sum": 40,
+      "last_known_plugin_version": {
+        "sampled_at": "2026-11-05T01:32:12.582Z",
+        "plugin": "unknown",
+        "plugin_version": "unknown"
+      },
+      "last_known_ide_version": {
+        "sampled_at": "2026-11-05T01:32:12.582Z",
+        "ide_version": "1.144.0"
+      }
+    }
+  ],
+  "totals_by_feature": [
+    {
+      "feature": "chat_panel_agent_mode",
+      "user_initiated_interaction_count": 2,
+      "code_generation_activity_count": 1,
+      "code_acceptance_activity_count": 1,
+      "loc_suggested_to_add_sum": 80,
+      "loc_suggested_to_delete_sum": 20,
+      "loc_added_sum": 80,
+      "loc_deleted_sum": 20
+    },
+    {
+      "feature": "agent_edit",
+      "user_initiated_interaction_count": 0,
+      "code_generation_activity_count": 1,
+      "code_acceptance_activity_count": 0,
+      "loc_suggested_to_add_sum": 0,
+      "loc_suggested_to_delete_sum": 0,
+      "loc_added_sum": 80,
+      "loc_deleted_sum": 20
+    }
+  ],
+  "totals_by_language_feature": [
+    {
+      "language": "python",
+      "feature": "chat_panel_agent_mode",
+      "code_generation_activity_count": 1,
+      "code_acceptance_activity_count": 1,
+      "loc_suggested_to_add_sum": 80,
+      "loc_suggested_to_delete_sum": 20,
+      "loc_added_sum": 80,
+      "loc_deleted_sum": 20
+    },
+    {
+      "language": "unknown",
+      "feature": "agent_edit",
+      "code_generation_activity_count": 1,
+      "code_acceptance_activity_count": 0,
+      "loc_suggested_to_add_sum": 0,
+      "loc_suggested_to_delete_sum": 0,
+      "loc_added_sum": 80,
+      "loc_deleted_sum": 20
+    },
+    {
+      "language": "unknown",
+      "feature": "chat_panel_agent_mode",
+      "code_generation_activity_count": 0,
+      "code_acceptance_activity_count": 0,
+      "loc_suggested_to_add_sum": 0,
+      "loc_suggested_to_delete_sum": 0,
+      "loc_added_sum": 0,
+      "loc_deleted_sum": 0
+    }
+  ],
+  "totals_by_language_model": [
+    {
+      "language": "python",
+      "model": "gpt-6-luna",
+      "code_generation_activity_count": 1,
+      "code_acceptance_activity_count": 1,
+      "loc_suggested_to_add_sum": 80,
+      "loc_suggested_to_delete_sum": 20,
+      "loc_added_sum": 80,
+      "loc_deleted_sum": 20
+    },
+    {
+      "language": "unknown",
+      "model": "gpt-6-luna",
+      "code_generation_activity_count": 1,
+      "code_acceptance_activity_count": 0,
+      "loc_suggested_to_add_sum": 0,
+      "loc_suggested_to_delete_sum": 0,
+      "loc_added_sum": 80,
+      "loc_deleted_sum": 20
+    }
+  ],
+  "totals_by_model_feature": [
+    {
+      "model": "gpt-6-luna",
+      "feature": "chat_panel_agent_mode",
+      "user_initiated_interaction_count": 2,
+      "code_generation_activity_count": 1,
+      "code_acceptance_activity_count": 1,
+      "loc_suggested_to_add_sum": 80,
+      "loc_suggested_to_delete_sum": 20,
+      "loc_added_sum": 80,
+      "loc_deleted_sum": 20
+    },
+    {
+      "model": "gpt-6-luna",
+      "feature": "agent_edit",
+      "user_initiated_interaction_count": 0,
+      "code_generation_activity_count": 1,
+      "code_acceptance_activity_count": 0,
+      "loc_suggested_to_add_sum": 0,
+      "loc_suggested_to_delete_sum": 0,
+      "loc_added_sum": 80,
+      "loc_deleted_sum": 20
+    }
+  ],
+  "used_agent": true,
+  "used_chat": true,
+  "loc_suggested_to_add_sum": 80,
+  "loc_suggested_to_delete_sum": 20,
+  "loc_added_sum": 160,
+  "loc_deleted_sum": 40,
+  "used_cli": false,
+  "used_copilot_coding_agent": false,
+  "used_copilot_cloud_agent": false,
+  "ai_adoption_phase": {
+    "phase_number": 1,
+    "phase": "Phase 1",
+    "version": "v1"
+  },
+  "ai_credits_used": 0.45216449999999997,
+  "used_copilot_app": false,
+  "totals_by_skill": [],
+  "totals_by_custom_agent": [],
+  "totals_by_mcp": [],
+  "totals_by_slash_cmd": [],
+  "distinct_skill_use_count": 0,
+  "distinct_custom_agent_use_count": 0,
+  "distinct_mcp_use_count": 0,
+  "distinct_slash_cmd_use_count": 0,
+  "totals_by_plugin": [],
+  "distinct_plugin_use_count": 0,
+  "totals_by_client": [
+    {
+      "client": "vscode",
+      "request_count": 4,
+      "session_count": 2,
+      "token_usage": {
+        "avg_tokens_per_request": 15068.0,
+        "output_tokens_sum": 1121,
+        "prompt_tokens_sum": 59151
+      },
+      "totals_by_model": [
+        {
+          "model": "gpt-6-luna",
+          "model_selection_mode": "user_selected",
+          "is_custom_enterprise_model": false,
+          "request_count": 2,
+          "token_usage": {
+            "avg_tokens_per_request": 29511.0,
+            "output_tokens_sum": 1091,
+            "prompt_tokens_sum": 57931
+          }
+        },
+        {
+          "model": "unknown",
+          "model_selection_mode": "user_selected",
+          "is_custom_enterprise_model": false,
+          "request_count": 2,
+          "token_usage": {
+            "avg_tokens_per_request": 625.0,
+            "output_tokens_sum": 30,
+            "prompt_tokens_sum": 1220
+          }
+        }
+      ]
+    }
+  ],
+  "used_local_byok": false,
+  "client_telemetry_present": true,
+  "usage_metrics_requirements": {
+    "met": [
+      "vscode"
+    ],
+    "unmet": [],
+    "unknown": []
+  }
+}
+```
 
 ### Evidence
 
@@ -1310,3 +1601,9 @@ Other same-day activity has not been fully excluded, and user-day reports do not
 | [loc-ui-test-20261105-observed.json](loc-ui-test-20261105-observed.json) | Post-Keep contents, differences, line counts, line endings, and hash |
 | [DC test file](copilot-loc-test/default_copilot_20261105.py) | Synthetic file written by Copilot harness / default Agent |
 | [Pre-test API reference](metrics-enterprise-gye-gye6666-20261105-reauthorized-refresh-raw.json) | November 5 08:57 report ending UTC November 3; does not cover this test day |
+| [metrics-enterprise-gye-gye6666-20261106-1404-refresh-raw.json](metrics-enterprise-gye-gye6666-20261106-1404-refresh-raw.json) | November 6 14:04 latest target-user report, covering DC and historical test dates |
+| [metrics-enterprise-gye-gye6666-20261105-one-day-20261106-1404-raw.json](metrics-enterprise-gye-gye6666-20261105-one-day-20261106-1404-raw.json) | Original November 5 single-day target-user record |
+| [loc-ui-test-20261105-dc-server-comparison-20261106-1404.json](loc-ui-test-20261105-dc-server-comparison-20261106-1404.json) | Local 80/20 versus daily 160/40 reconciliation and attribution limits |
+| [loc-ui-test-20261105-dc-server-comparison-20261106.json](loc-ui-test-20261105-dc-server-comparison-20261106.json) | Historical November 6 08:11 pending-coverage state, not overwritten with zero values |
+| [08:11 latest report](metrics-enterprise-gye-gye6666-20261106-0811-refresh-raw.json) / [08:11 single-day response](metrics-enterprise-gye-gye6666-20261105-one-day-20261106-raw.json) | Latest report ends November 4; single-day endpoint returned HTTP 200 / `""` |
+| [10:10 latest report](metrics-enterprise-gye-gye6666-20261106-1009-refresh-raw.json) / [10:10 single-day response](metrics-enterprise-gye-gye6666-20261105-one-day-20261106-1009-raw.json) | Second morning check still lacked a downloadable November 5 user record |

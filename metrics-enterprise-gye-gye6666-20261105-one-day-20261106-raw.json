@@ -1,0 +1,18 @@
+{
+  "queried_at_utc": "2026-11-06T00:11:39.531561+00:00",
+  "enterprise": "gye",
+  "local_api_account": "gaussye",
+  "report_user": "gye6666",
+  "test_utc_day": "2026-11-05",
+  "authentication_source": "existing_local_gh_login_reauthorized",
+  "endpoint": "enterprises/gye/copilot/metrics/reports/users-1-day?day=2026-11-05",
+  "http_status": 200,
+  "response_headers": {
+    "content-type": "application/json; charset=utf-8",
+    "x-github-api-version-selected": "2026-03-10",
+    "x-github-request-id": "608D:304F50:263767:3DD977:6AED1B37"
+  },
+  "status": "no_downloadable_report_in_response",
+  "response_json_type": "str",
+  "server_message": ""
+}
