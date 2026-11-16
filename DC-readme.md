@@ -1,8 +1,8 @@
 # GitHub Copilot DC 独立测试：新增 400 行、删除 10 行
 
-测试日期及整理日期：**2026-11-12**。本文件单独记录本轮 DC 测试，不覆盖 [历史中文 README](README.md) 或 [历史英文 README](README.en.md)。
+测试日期：**2026-11-12**；API 对账更新：**2026-11-16**。本文件单独记录本轮 DC 测试，不覆盖 [历史中文 README](README.md) 或 [历史英文 README](README.en.md)。
 
-**本地结果：DC（Copilot Harness / 默认 Agent）成功新增 400 行、删除 10 行，净增 390 行。界面与落盘计数一致，已点击 Allow Once 和 Keep All Edits。仅提交 1 个受控任务，没有手工补改 Agent 输出。API 对账尚未执行，服务端行数未知，不是 0 / 0。**
+**本地结果：DC（Copilot Harness / 默认 Agent）新增 400 行、删除 10 行，净增 390 行，已 Allow Once 并 Keep。11 月 16 日 API 返回该用户日新增 800 行、删除 20 行：`agent_edit` 与 `chat_panel_agent_mode` 各为 400 / 10。日总计是本地受控编辑量的两倍，两个接口活动字段一致；疑似重叠归因，但尚不能证明同一次编辑被重复计算。**
 
 ## 1. 账号、环境与执行记录
 
@@ -79,7 +79,7 @@ def total():
 | 内容匹配预期 | 精确匹配 | 不以完成文本替代 | **完全一致** |
 | Python 语法 | 有效 | 不以界面推断 | **语法分析无错误** |
 
-最终公式为 **15 + 400 - 10 = 405 行**。新增 400 行、删除 10 行与净增 390 行是不同指标，后续 API 必须分别对账。
+最终公式为 **15 + 400 - 10 = 405 行**。新增 400 行、删除 10 行与净增 390 行是不同指标，下节 API 分别对账。
 
 | 证据 | 值 |
 |---|---|
@@ -90,26 +90,53 @@ def total():
 | 历史文件保留 | **25 项原有 Python 文件及 Agent 定义的合计哈希记录均未变化**，不包含本轮新文件 |
 | 本地 acceptance 日志 | 采集到 **0 条**，不等于事件没有产生或上传 |
 
-## 3. API 对账状态与后续时间
+## 3. API 对账结果：2026-11-16
 
-**当前仅完成客户端测试。没有在本轮测试日调用 Metrics API，因此没有本轮活动日的原始服务端用户记录，也没有服务端 LoC 数值可填。**
+本次使用本地 GitHub CLI 已存凭据，确认读取账号 `gaussye`，查询企业 `gye`，仅保留目标用户 `gye6666` 的完整原始记录。**latest 和单日接口均为 HTTP 200、正常报表对象，且各含 1 条目标用户的 11 月 12 日记录，不是空响应或缺记录。**
 
-| 对账项 | 当前状态 |
+| 对账项 | 本次结果 |
 |---|---|
 | 用户 / 企业 | `gye6666` / `gye` |
 | API 活动日期 | **UTC 2026-11-12** |
 | 对应北京时间区间 | `[2026-11-12 08:00, 2026-11-13 08:00)` |
 | 本地受控编辑量 | **新增 400 / 删除 10 / 净增 390**，已 Keep |
-| API 实际新增 / 删除 | **未知（`null` / `null`），不是 0 / 0** |
-| 本地与 API 差值 | **待查询，不能先计算为 400 / 10** |
-| 两天后首次复查 | **11 月 14 日，用户手动要求查询**；原拟 09:00 仅作时间参考，未创建日程 |
-| 两个完整 UTC 日窗口结束 | **2026-11-15 08:00 北京时间** |
-| 三个完整 UTC 日保守复查节点 | **2026-11-16 08:00 北京时间** |
-| 自动任务 / 提醒 | **未创建**，用户选择两天后手动发起 |
+| API 实际新增 / 删除 / 净增 | **800 / 20 / 780** |
+| API − 本地（新增 / 删除 / 净增） | **+400 / +10 / +390** |
+| API / 本地 | 新增、删除均为 **2 倍**，不是“接受率 200%” |
+| latest 查询时间 | `2026-11-16T04:58:22.482530+00:00`，北京时间 **12:58:22** |
+| latest 覆盖日期 | **UTC 2026-10-19 至 2026-11-15** |
+| 单日查询时间 | `2026-11-16T04:58:22.307301+00:00` |
+| 两接口比对 | 仅排除 `report_start_day` / `report_end_day` / `report_day` 元数据，**其余全部用户活动字段相同** |
+| 处理窗口 | 已过 11 月 15 日 08:00 的两个完整 UTC 日节点，也已过 11 月 16 日 08:00 的三个完整 UTC 日参考节点 |
+| 手动复查 / 自动任务 | 实际于 **11 月 16 日**手动复查；原拟 11 月 14 日未执行，没有创建自动任务 |
 
-**“两天后”与“活动日结束后两个完整 UTC 日”不同。** 11 月 14 日可以先查，但它早于上述完整处理窗口；未覆盖、空响应、没有目标用户记录或仍在处理的情况必须分别记录，不能一律解释为 LoC 为零。这些日期也不保证届时报表更新、回填或最终定稿。
+### 3.1 功能分类与日总计
 
-### 后续使用的接口
+| feature / 汇总 | 实际新增 / 删除 | 建议新增 / 删除 | 用户交互 | generation | acceptance |
+|---|---:|---:|---:|---:|---:|
+| `chat_panel_agent_mode` | **400 / 10** | 400 / 10 | 2 | 1 | 1 |
+| `agent_edit` | **400 / 10** | 0 / 0 | 0 | 1 | 0 |
+| **顶层用户日总计** | **800 / 20** | **400 / 10** | **2** | **2** | **1** |
+
+**800 / 20 直接来自原始顶层字段**，不是把 IDE、语言、模型等不同维度相加，也不是把建议行数与实际行数相加。两个 feature 各自的实际 400 / 10 合计与顶层一致；单独看 `agent_edit` 则数值等于本地受控编辑量，但日汇总没有逐事件映射，不能证明该行仅由本次任务贡献。
+
+### 3.2 版本、遥测与归因
+
+| API 字段 | 实际返回 / 解释 |
+|---|---|
+| IDE | `vscode` / **1.145.3** |
+| 插件 | **`plugin: "unknown"`、`plugin_version: "unknown"`**，不以本地扩展 0.73.0 替换 |
+| 版本采样时间 | `2026-11-12T01:01:40.290Z`，北京时间 09:01:40 |
+| 模型 feature 标签 | `gpt-6.1-sol` |
+| 语言 feature | chat 的 400 / 10 为 `python`；`agent_edit` 的 400 / 10 为 `unknown` |
+| `totals_by_client` | `vscode`，**5 requests / 2 sessions**；不等于发送了 5 次或 2 次受控任务 |
+| `totals_by_custom_agent` / distinct | `[]` / `0`；本轮使用默认 Agent，不据此判断 custom 是否受支持 |
+| `client_telemetry_present` | `true` |
+| `usage_metrics_requirements` | `met: ["vscode"]`，`unmet: []`，`unknown: []` |
+
+本地只提交 1 个受控任务。日级交互 2、请求 5、session 2 的口径不同，其他当日活动未完全排除；没有 SDK 请求 ID 或逐编辑事件证明 feature 间的关系。本地 acceptance 日志捕获 0 条，与这次日级 API 有非零 LoC 不矛盾，也不能据此验证本次请求的遥测完整送达。
+
+### 3.3 本次使用的接口
 
 ```http
 GET https://api.github.com/enterprises/gye/copilot/metrics/reports/users-28-day/latest
@@ -123,17 +150,228 @@ Accept: application/vnd.github+json
 X-GitHub-Api-Version: 2026-03-10
 ```
 
-以上是**后续查询目标，不是本轮已完成的调用**。查询时先检查认证、HTTP 状态和真实响应结构，再确认报表覆盖日期，筛选 `user_login == "gye6666"` 和 `day == "2026-11-12"`。
+以上两次调用均已完成，使用 API 版本 `2026-03-10`，按 `user_login == "gye6666"` 和 `day == "2026-11-12"` 对账。完整原始记录及查询时间见下节证据，不含凭据、签名下载 URL 或其他用户。
 
-后续原始 JSON 应完整保留目标用户记录的所有字段和值，另外记录查询时间和接口。不得上传凭据、签名下载 URL、其他用户数据或完整客户端日志。
+### 3.4 完整原始用户日记录
 
-## 4. 后续重点分析与解释限制
+以下从 [11 月 12 日单日报表](metrics-enterprise-gye-gye6666-20261112-one-day-20261116-raw.json) 原样保留目标用户记录的所有字段和值，仅调整 JSON 排版；不是分析摘要。
+
+<details>
+<summary>展开 2026-11-12 用户日完整 JSON</summary>
+
+```json
+{
+  "user_id": 274194146,
+  "user_login": "gye6666",
+  "day": "2026-11-12",
+  "enterprise_id": "590626",
+  "user_initiated_interaction_count": 2,
+  "code_generation_activity_count": 2,
+  "code_acceptance_activity_count": 1,
+  "totals_by_ide": [
+    {
+      "ide": "vscode",
+      "user_initiated_interaction_count": 2,
+      "code_generation_activity_count": 2,
+      "code_acceptance_activity_count": 1,
+      "loc_suggested_to_add_sum": 400,
+      "loc_suggested_to_delete_sum": 10,
+      "loc_added_sum": 800,
+      "loc_deleted_sum": 20,
+      "last_known_plugin_version": {
+        "sampled_at": "2026-11-12T01:01:40.290Z",
+        "plugin": "unknown",
+        "plugin_version": "unknown"
+      },
+      "last_known_ide_version": {
+        "sampled_at": "2026-11-12T01:01:40.290Z",
+        "ide_version": "1.145.3"
+      }
+    }
+  ],
+  "totals_by_feature": [
+    {
+      "feature": "chat_panel_agent_mode",
+      "user_initiated_interaction_count": 2,
+      "code_generation_activity_count": 1,
+      "code_acceptance_activity_count": 1,
+      "loc_suggested_to_add_sum": 400,
+      "loc_suggested_to_delete_sum": 10,
+      "loc_added_sum": 400,
+      "loc_deleted_sum": 10
+    },
+    {
+      "feature": "agent_edit",
+      "user_initiated_interaction_count": 0,
+      "code_generation_activity_count": 1,
+      "code_acceptance_activity_count": 0,
+      "loc_suggested_to_add_sum": 0,
+      "loc_suggested_to_delete_sum": 0,
+      "loc_added_sum": 400,
+      "loc_deleted_sum": 10
+    }
+  ],
+  "totals_by_language_feature": [
+    {
+      "language": "python",
+      "feature": "chat_panel_agent_mode",
+      "code_generation_activity_count": 1,
+      "code_acceptance_activity_count": 1,
+      "loc_suggested_to_add_sum": 400,
+      "loc_suggested_to_delete_sum": 10,
+      "loc_added_sum": 400,
+      "loc_deleted_sum": 10
+    },
+    {
+      "language": "unknown",
+      "feature": "agent_edit",
+      "code_generation_activity_count": 1,
+      "code_acceptance_activity_count": 0,
+      "loc_suggested_to_add_sum": 0,
+      "loc_suggested_to_delete_sum": 0,
+      "loc_added_sum": 400,
+      "loc_deleted_sum": 10
+    },
+    {
+      "language": "unknown",
+      "feature": "chat_panel_agent_mode",
+      "code_generation_activity_count": 0,
+      "code_acceptance_activity_count": 0,
+      "loc_suggested_to_add_sum": 0,
+      "loc_suggested_to_delete_sum": 0,
+      "loc_added_sum": 0,
+      "loc_deleted_sum": 0
+    }
+  ],
+  "totals_by_language_model": [
+    {
+      "language": "python",
+      "model": "gpt-6.1-sol",
+      "code_generation_activity_count": 1,
+      "code_acceptance_activity_count": 1,
+      "loc_suggested_to_add_sum": 400,
+      "loc_suggested_to_delete_sum": 10,
+      "loc_added_sum": 400,
+      "loc_deleted_sum": 10
+    },
+    {
+      "language": "unknown",
+      "model": "gpt-6.1-sol",
+      "code_generation_activity_count": 1,
+      "code_acceptance_activity_count": 0,
+      "loc_suggested_to_add_sum": 0,
+      "loc_suggested_to_delete_sum": 0,
+      "loc_added_sum": 400,
+      "loc_deleted_sum": 10
+    }
+  ],
+  "totals_by_model_feature": [
+    {
+      "model": "gpt-6.1-sol",
+      "feature": "chat_panel_agent_mode",
+      "user_initiated_interaction_count": 2,
+      "code_generation_activity_count": 1,
+      "code_acceptance_activity_count": 1,
+      "loc_suggested_to_add_sum": 400,
+      "loc_suggested_to_delete_sum": 10,
+      "loc_added_sum": 400,
+      "loc_deleted_sum": 10
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "feature": "agent_edit",
+      "user_initiated_interaction_count": 0,
+      "code_generation_activity_count": 1,
+      "code_acceptance_activity_count": 0,
+      "loc_suggested_to_add_sum": 0,
+      "loc_suggested_to_delete_sum": 0,
+      "loc_added_sum": 400,
+      "loc_deleted_sum": 10
+    }
+  ],
+  "used_agent": true,
+  "used_chat": true,
+  "loc_suggested_to_add_sum": 400,
+  "loc_suggested_to_delete_sum": 10,
+  "loc_added_sum": 800,
+  "loc_deleted_sum": 20,
+  "used_cli": false,
+  "used_copilot_coding_agent": false,
+  "used_copilot_cloud_agent": false,
+  "ai_adoption_phase": {
+    "phase_number": 1,
+    "phase": "Phase 1",
+    "version": "v1"
+  },
+  "ai_credits_used": 13.95458,
+  "used_copilot_app": false,
+  "totals_by_skill": [],
+  "totals_by_custom_agent": [],
+  "totals_by_mcp": [],
+  "totals_by_slash_cmd": [],
+  "distinct_skill_use_count": 0,
+  "distinct_custom_agent_use_count": 0,
+  "distinct_mcp_use_count": 0,
+  "distinct_slash_cmd_use_count": 0,
+  "totals_by_plugin": [],
+  "distinct_plugin_use_count": 0,
+  "totals_by_client": [
+    {
+      "client": "vscode",
+      "request_count": 5,
+      "session_count": 2,
+      "token_usage": {
+        "avg_tokens_per_request": 20993.8,
+        "output_tokens_sum": 4314,
+        "prompt_tokens_sum": 100655
+      },
+      "totals_by_model": [
+        {
+          "model": "gpt-6.1-sol",
+          "model_selection_mode": "user_selected",
+          "is_custom_enterprise_model": false,
+          "request_count": 3,
+          "token_usage": {
+            "avg_tokens_per_request": 34607.67,
+            "output_tokens_sum": 4304,
+            "prompt_tokens_sum": 99519
+          }
+        },
+        {
+          "model": "unknown",
+          "model_selection_mode": "user_selected",
+          "is_custom_enterprise_model": false,
+          "request_count": 2,
+          "token_usage": {
+            "avg_tokens_per_request": 573.0,
+            "output_tokens_sum": 10,
+            "prompt_tokens_sum": 1136
+          }
+        }
+      ]
+    }
+  ],
+  "used_local_byok": false,
+  "client_telemetry_present": true,
+  "usage_metrics_requirements": {
+    "met": [
+      "vscode"
+    ],
+    "unmet": [],
+    "unknown": []
+  }
+}
+```
+
+</details>
+
+## 4. 分析结论与解释限制
 
 | 核对项 | 分析口径 |
 |---|---|
 | 顶层实际 LoC | 首先读取用户日 `loc_added_sum` / `loc_deleted_sum`，与 **400 / 10** 对照 |
 | 功能分类 | 分别查看 `chat_panel_agent_mode`、`agent_edit` 的实际增删、建议、生成与接受活动 |
-| 可能重叠 | 如果两个 feature 各出现 400 / 10，且顶层为 800 / 20，应记录异常线索，**不能直接宣布同一次编辑被重复计算** |
+| 可能重叠 | 实际已出现两个 feature 各 400 / 10、顶层 800 / 20；这是异常线索，**不能直接宣布同一次编辑被重复计算** |
 | 不同维度 | IDE、语言、模型和 feature 是不同统计视角，不能相加重复计数 |
 | 交互 / session | 本地受控任务提交 1 次；用户日汇总可能含其他活动，交互数不能机械等同于本轮提交次数 |
 | 版本 | 保存 API 实际返回的 IDE 和插件名称 / 版本，不用本地 `copilot-chat 0.73.0` 替代 `unknown` 或其他组件 |
@@ -142,13 +380,24 @@ X-GitHub-Api-Version: 2026-03-10
 
 历史 11 月 5 日 DC 测试的本地修改量为 **80 / 20**，11 月 6 日快照中的用户日总计为 **160 / 40**，其中 `chat_panel_agent_mode` 和 `agent_edit` 各为 **80 / 20**。该现象是本轮关注分类与可能重叠计数的原因，不是已确认重复遥测的证据；详见 [历史对账记录](loc-ui-test-20261105-dc-server-comparison-20261106-1404.json)。
 
+本次 latest 快照中该历史 DC 仍为 160 / 40。**11 月 13 日 CC 也返回 800 / 20，且两个 feature 各为 400 / 10**，详见 [CC-readme.md](CC-readme.md)。因此，双 feature 等量计数现象已经出现在不同编辑量的 DC，以及自定义 Agent 的 CC；这增强了“可能重叠报告 / 重复归因”的调查线索，但不支持“只有默认 Agent 有 LoC、自定义 Agent 一概没有”的解释。
+
+[官方 LoC 文档](https://docs.github.com/en/copilot/reference/copilot-usage-metrics/lines-of-code-metrics)（11 月 16 日复核）把直接文件编辑列入 `agent_edit`，chat 的实际 LoC 则说明为代码块 Copy / Apply。本次受控任务未手动复制或应用聊天代码块，双分类与受控操作之间的对应关系应进一步核查；**Keep 与 chat 分类同时出现不证明 Keep 导致重复统计**。官方也提醒遥测 LoC 不保证与编辑器 diff 相等，不能仅凭 2 倍就定性为产品缺陷。
+
+[官方 SDK 覆盖说明](https://docs.github.com/en/copilot/reference/copilot-usage-metrics/usage-metrics-coverage)列出的 VS Code 身份缺失区间为 1.134–1.138 的 agent window；本轮是普通编辑器 Chat、1.145.3，不在该已知版本区间，不能直接套用为根因。API 插件版本仍应保留 `unknown`。
+
+本次已过三个完整 UTC 日参考节点，不能只说“测试日尚未进入报表”；但经过时间和报表可用也不保证数据最终定稿。后续可用逐请求 / 逐编辑遥测核对两类事件，当前根因未确认。本次仅查询与更新证据，没有重跑编辑或修改历史被测文件。
+
 本轮修改量、基线、IDE / 扩展和模型均与前轮 DC 不同，**不是同环境 A/B 对照**。前轮没有重新核验 SDK / runtime 的具体版本，不能认定它们与本轮相同或不同。同日其他活动未完全排除，不提前认定默认 / 自定义 Agent、Keep 或 Harness 的根因。
 
 ## 5. 本轮证据
 
 | 文件 | 用途 |
 |---|---|
-| [loc-ui-test-20261112-dc.json](loc-ui-test-20261112-dc.json) | 场景、账号、版本、单次提交、Allow / Keep、实际计数及待对账状态 |
+| [loc-ui-test-20261112-dc.json](loc-ui-test-20261112-dc.json) | 场景、账号、版本、单次提交、Allow / Keep、实际计数及本次对账结果 |
+| [11 月 16 日对账分析](loc-ui-test-20261112-dc-server-comparison-20261116.json) | 双接口一致性、功能分类、800 / 20 与本地 400 / 10 的差异及限制 |
+| [11 月 12 日单日原始 API](metrics-enterprise-gye-gye6666-20261112-one-day-20261116-raw.json) | 唯一目标用户日完整记录及调用元数据 |
+| [11 月 16 日 latest 原始 API](metrics-enterprise-gye-gye6666-20261116-followup-raw.json) | 同次覆盖 10 月 19 日至 11 月 15 日的目标用户记录，供历史对照 |
 | [loc-ui-test-20261112-baseline-observed.json](loc-ui-test-20261112-baseline-observed.json) | 修改前 15 行 CRLF 基线、预期最终内容及哈希 |
 | [loc-ui-test-20261112-observed.json](loc-ui-test-20261112-observed.json) | Keep 后实际 405 行内容、差异、语法和哈希 |
 | [loc-ui-test-20261112-preserved-files.json](loc-ui-test-20261112-preserved-files.json) | 本轮开始前的 25 项历史文件及 Agent 定义哈希，结束后逐项核对未变 |

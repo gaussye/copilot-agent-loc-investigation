@@ -1,0 +1,430 @@
+{
+  "enterprise": "gye",
+  "actor": "gye6666",
+  "test_day_utc": "2026-11-12",
+  "status": "daily_totals_exceed_controlled_edit_attribution_unresolved",
+  "client_manifest": "loc-ui-test-20261112-dc.json",
+  "latest_report": {
+    "queried_at_utc": "2026-11-16T04:58:22.482530+00:00",
+    "completed_at_utc": "2026-11-16T04:58:27.539332+00:00",
+    "raw_api_snapshot": "metrics-enterprise-gye-gye6666-20261116-followup-raw.json",
+    "http_status": 200,
+    "report_start_day": "2026-10-19",
+    "report_end_day": "2026-11-15",
+    "test_day_covered": true,
+    "test_day_user_record_count": 1
+  },
+  "single_day_report": {
+    "queried_at_utc": "2026-11-16T04:58:22.307301+00:00",
+    "completed_at_utc": "2026-11-16T04:58:27.303092+00:00",
+    "raw_api_snapshot": "metrics-enterprise-gye-gye6666-20261112-one-day-20261116-raw.json",
+    "http_status": 200,
+    "report_day": "2026-11-12",
+    "test_day_user_record_count": 1,
+    "all_user_activity_fields_match_latest": true,
+    "normalization_removed_fields": [
+      "report_start_day",
+      "report_end_day",
+      "report_day"
+    ]
+  },
+  "client": {
+    "harness": "Copilot",
+    "agent": "Agent",
+    "loc_added_sum": 400,
+    "loc_deleted_sum": 10,
+    "net": 390,
+    "prompt_submission_count": 1,
+    "write_confirmation_action": "Allow Once",
+    "keep_clicked": true,
+    "vscode": "1.145.3",
+    "copilot_chat": "0.73.0",
+    "model": "GPT-6.1 Sol",
+    "request_id": null
+  },
+  "server": {
+    "user_initiated_interaction_count": 2,
+    "code_generation_activity_count": 2,
+    "code_acceptance_activity_count": 1,
+    "loc_suggested_to_add_sum": 400,
+    "loc_suggested_to_delete_sum": 10,
+    "loc_added_sum": 800,
+    "loc_deleted_sum": 20,
+    "net": 780,
+    "totals_by_feature": [
+      {
+        "feature": "chat_panel_agent_mode",
+        "user_initiated_interaction_count": 2,
+        "code_generation_activity_count": 1,
+        "code_acceptance_activity_count": 1,
+        "loc_suggested_to_add_sum": 400,
+        "loc_suggested_to_delete_sum": 10,
+        "loc_added_sum": 400,
+        "loc_deleted_sum": 10
+      },
+      {
+        "feature": "agent_edit",
+        "user_initiated_interaction_count": 0,
+        "code_generation_activity_count": 1,
+        "code_acceptance_activity_count": 0,
+        "loc_suggested_to_add_sum": 0,
+        "loc_suggested_to_delete_sum": 0,
+        "loc_added_sum": 400,
+        "loc_deleted_sum": 10
+      }
+    ],
+    "totals_by_language_feature": [
+      {
+        "language": "python",
+        "feature": "chat_panel_agent_mode",
+        "code_generation_activity_count": 1,
+        "code_acceptance_activity_count": 1,
+        "loc_suggested_to_add_sum": 400,
+        "loc_suggested_to_delete_sum": 10,
+        "loc_added_sum": 400,
+        "loc_deleted_sum": 10
+      },
+      {
+        "language": "unknown",
+        "feature": "agent_edit",
+        "code_generation_activity_count": 1,
+        "code_acceptance_activity_count": 0,
+        "loc_suggested_to_add_sum": 0,
+        "loc_suggested_to_delete_sum": 0,
+        "loc_added_sum": 400,
+        "loc_deleted_sum": 10
+      },
+      {
+        "language": "unknown",
+        "feature": "chat_panel_agent_mode",
+        "code_generation_activity_count": 0,
+        "code_acceptance_activity_count": 0,
+        "loc_suggested_to_add_sum": 0,
+        "loc_suggested_to_delete_sum": 0,
+        "loc_added_sum": 0,
+        "loc_deleted_sum": 0
+      }
+    ],
+    "totals_by_custom_agent": [],
+    "distinct_custom_agent_use_count": 0,
+    "chat_panel_custom_mode_present": false,
+    "vscode_client_request_count": 5,
+    "vscode_client_session_count": 2,
+    "last_known_ide_version": {
+      "sampled_at": "2026-11-12T01:01:40.290Z",
+      "ide_version": "1.145.3"
+    },
+    "last_known_plugin_version": {
+      "sampled_at": "2026-11-12T01:01:40.290Z",
+      "plugin": "unknown",
+      "plugin_version": "unknown"
+    },
+    "model_feature_labels": [
+      "gpt-6.1-sol"
+    ],
+    "client_telemetry_present": true,
+    "usage_metrics_requirements": {
+      "met": [
+        "vscode"
+      ],
+      "unmet": [],
+      "unknown": []
+    }
+  },
+  "difference_server_minus_controlled_local": {
+    "loc_added_sum": 400,
+    "loc_deleted_sum": 10,
+    "net": 390
+  },
+  "ratio_server_to_controlled_local": {
+    "loc_added_sum": 2.0,
+    "loc_deleted_sum": 2.0
+  },
+  "processing_window": {
+    "two_full_utc_days_checkpoint_local": "2026-11-15T08:00:00+08:00",
+    "three_full_utc_days_checkpoint_local": "2026-11-16T08:00:00+08:00",
+    "two_full_utc_days_checkpoint_passed": true,
+    "three_full_utc_days_checkpoint_passed": true,
+    "finalization_guaranteed": false
+  },
+  "same_latest_snapshot_history": [
+    {
+      "day": "2026-10-26",
+      "controlled_case": "Four-case CL/CC/DC/DL",
+      "controlled_local": {
+        "added": 320,
+        "deleted": 80
+      },
+      "server": {
+        "user_initiated_interaction_count": 2,
+        "code_generation_activity_count": 2,
+        "code_acceptance_activity_count": 0,
+        "loc_suggested_to_add_sum": 0,
+        "loc_suggested_to_delete_sum": 0,
+        "loc_added_sum": 160,
+        "loc_deleted_sum": 40
+      },
+      "features": [
+        {
+          "feature": "agent_edit",
+          "user_initiated_interaction_count": 0,
+          "code_generation_activity_count": 2,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 160,
+          "loc_deleted_sum": 40
+        },
+        {
+          "feature": "chat_panel_agent_mode",
+          "user_initiated_interaction_count": 1,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        },
+        {
+          "feature": "chat_panel_custom_mode",
+          "user_initiated_interaction_count": 1,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ]
+    },
+    {
+      "day": "2026-10-28",
+      "controlled_case": "CL",
+      "controlled_local": {
+        "added": 80,
+        "deleted": 20
+      },
+      "server": {
+        "user_initiated_interaction_count": 5,
+        "code_generation_activity_count": 0,
+        "code_acceptance_activity_count": 0,
+        "loc_suggested_to_add_sum": 0,
+        "loc_suggested_to_delete_sum": 0,
+        "loc_added_sum": 0,
+        "loc_deleted_sum": 0
+      },
+      "features": [
+        {
+          "feature": "chat_panel_custom_mode",
+          "user_initiated_interaction_count": 5,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ]
+    },
+    {
+      "day": "2026-10-30",
+      "controlled_case": "DL",
+      "controlled_local": {
+        "added": 80,
+        "deleted": 20
+      },
+      "server": {
+        "user_initiated_interaction_count": 1,
+        "code_generation_activity_count": 0,
+        "code_acceptance_activity_count": 0,
+        "loc_suggested_to_add_sum": 0,
+        "loc_suggested_to_delete_sum": 0,
+        "loc_added_sum": 0,
+        "loc_deleted_sum": 0
+      },
+      "features": [
+        {
+          "feature": "chat_panel_agent_mode",
+          "user_initiated_interaction_count": 1,
+          "code_generation_activity_count": 0,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 0,
+          "loc_deleted_sum": 0
+        }
+      ]
+    },
+    {
+      "day": "2026-11-02",
+      "controlled_case": "CC",
+      "controlled_local": {
+        "added": 80,
+        "deleted": 20
+      },
+      "server": {
+        "user_initiated_interaction_count": 2,
+        "code_generation_activity_count": 1,
+        "code_acceptance_activity_count": 1,
+        "loc_suggested_to_add_sum": 80,
+        "loc_suggested_to_delete_sum": 20,
+        "loc_added_sum": 80,
+        "loc_deleted_sum": 20
+      },
+      "features": [
+        {
+          "feature": "chat_panel_agent_mode",
+          "user_initiated_interaction_count": 2,
+          "code_generation_activity_count": 1,
+          "code_acceptance_activity_count": 1,
+          "loc_suggested_to_add_sum": 80,
+          "loc_suggested_to_delete_sum": 20,
+          "loc_added_sum": 80,
+          "loc_deleted_sum": 20
+        }
+      ]
+    },
+    {
+      "day": "2026-11-05",
+      "controlled_case": "DC",
+      "controlled_local": {
+        "added": 80,
+        "deleted": 20
+      },
+      "server": {
+        "user_initiated_interaction_count": 2,
+        "code_generation_activity_count": 2,
+        "code_acceptance_activity_count": 1,
+        "loc_suggested_to_add_sum": 80,
+        "loc_suggested_to_delete_sum": 20,
+        "loc_added_sum": 160,
+        "loc_deleted_sum": 40
+      },
+      "features": [
+        {
+          "feature": "chat_panel_agent_mode",
+          "user_initiated_interaction_count": 2,
+          "code_generation_activity_count": 1,
+          "code_acceptance_activity_count": 1,
+          "loc_suggested_to_add_sum": 80,
+          "loc_suggested_to_delete_sum": 20,
+          "loc_added_sum": 80,
+          "loc_deleted_sum": 20
+        },
+        {
+          "feature": "agent_edit",
+          "user_initiated_interaction_count": 0,
+          "code_generation_activity_count": 1,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 80,
+          "loc_deleted_sum": 20
+        }
+      ]
+    },
+    {
+      "day": "2026-11-12",
+      "controlled_case": "DC",
+      "controlled_local": {
+        "added": 400,
+        "deleted": 10
+      },
+      "server": {
+        "user_initiated_interaction_count": 2,
+        "code_generation_activity_count": 2,
+        "code_acceptance_activity_count": 1,
+        "loc_suggested_to_add_sum": 400,
+        "loc_suggested_to_delete_sum": 10,
+        "loc_added_sum": 800,
+        "loc_deleted_sum": 20
+      },
+      "features": [
+        {
+          "feature": "chat_panel_agent_mode",
+          "user_initiated_interaction_count": 2,
+          "code_generation_activity_count": 1,
+          "code_acceptance_activity_count": 1,
+          "loc_suggested_to_add_sum": 400,
+          "loc_suggested_to_delete_sum": 10,
+          "loc_added_sum": 400,
+          "loc_deleted_sum": 10
+        },
+        {
+          "feature": "agent_edit",
+          "user_initiated_interaction_count": 0,
+          "code_generation_activity_count": 1,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 400,
+          "loc_deleted_sum": 10
+        }
+      ]
+    },
+    {
+      "day": "2026-11-13",
+      "controlled_case": "CC",
+      "controlled_local": {
+        "added": 400,
+        "deleted": 10
+      },
+      "server": {
+        "user_initiated_interaction_count": 2,
+        "code_generation_activity_count": 2,
+        "code_acceptance_activity_count": 1,
+        "loc_suggested_to_add_sum": 400,
+        "loc_suggested_to_delete_sum": 10,
+        "loc_added_sum": 800,
+        "loc_deleted_sum": 20
+      },
+      "features": [
+        {
+          "feature": "chat_panel_agent_mode",
+          "user_initiated_interaction_count": 2,
+          "code_generation_activity_count": 1,
+          "code_acceptance_activity_count": 1,
+          "loc_suggested_to_add_sum": 400,
+          "loc_suggested_to_delete_sum": 10,
+          "loc_added_sum": 400,
+          "loc_deleted_sum": 10
+        },
+        {
+          "feature": "agent_edit",
+          "user_initiated_interaction_count": 0,
+          "code_generation_activity_count": 1,
+          "code_acceptance_activity_count": 0,
+          "loc_suggested_to_add_sum": 0,
+          "loc_suggested_to_delete_sum": 0,
+          "loc_added_sum": 400,
+          "loc_deleted_sum": 10
+        }
+      ]
+    }
+  ],
+  "interpretation": [
+    "Both endpoints contain exactly one matching user-day record and agree on every activity field after removing report-date metadata only.",
+    "The original top-level fields report +800/-20, twice the one controlled +400/-10 edit. This is not an analytical sum across IDE/model/language dimensions or suggested plus actual LoC.",
+    "agent_edit and chat_panel_agent_mode each report +400/-10. Suggested +400/-10 and one acceptance belong to chat_panel_agent_mode; agent_edit has zero suggestions and zero acceptances.",
+    "Both the November 12 default-Agent day and November 13 custom-Agent day have this same feature pattern. The custom-Agent test is not a zero-edit-LoC case at the daily aggregate level.",
+    "The November 13 UI selected LoC Probe, but its API custom-agent list is empty, the distinct count is zero and chat_panel_custom_mode is absent. Named-custom-agent attribution is missing in this snapshot, not edit LoC.",
+    "The repeated equal feature values across November 5 DC, November 12 DC and November 13 CC strengthen a possible overlapping-reporting/duplicate-attribution hypothesis; they do not prove the same edit was counted twice.",
+    "Other daily activity has not been excluded. Client request/session counts and IDE interaction counts are different measures, not proof of multiple controlled prompt submissions. There is no request-level edit mapping.",
+    "Both recent tests used Allow Once and Keep All Edits. This correlation does not establish that Keep causes chat_panel_agent_mode telemetry or duplication.",
+    "API IDE version is 1.145.3, while plugin and plugin_version are literally unknown. Preserve those values instead of replacing them with locally observed copilot-chat 0.73.0.",
+    "Local acceptance-log capture of zero does not contradict nonzero daily API edit metrics; neither establishes per-request delivery.",
+    "Report availability and elapsed processing checkpoints do not guarantee finalization. Historical client snapshots remain unchanged."
+  ],
+  "official_references": [
+    {
+      "url": "https://docs.github.com/en/copilot/reference/copilot-usage-metrics/lines-of-code-metrics",
+      "checked_on": "2026-11-16",
+      "relevance": "Direct agent file edits are documented under agent_edit; chat actual LoC represents code-block copy/apply."
+    },
+    {
+      "url": "https://docs.github.com/en/copilot/reference/copilot-usage-metrics/usage-metrics-coverage",
+      "checked_on": "2026-11-16",
+      "relevance": "Client request counts are not prompt counts; the documented VS Code SDK identification gap covers 1.134-1.138 in the agent window, unlike these ordinary-editor 1.145.3 tests."
+    }
+  ]
+}
